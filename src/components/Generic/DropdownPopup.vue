@@ -1,14 +1,14 @@
 <template>
   <div class="dropdown" ref="dropdownItem">
     <button
-      @click.stop.prevent
+      @click.stop.prevent="openPopup"
       class="dropdown__more">
     </button>
     <div
       v-if="isOpen"
       class="dropdown__menu">
       <button
-        @click.stop.prevent
+        @click.stop.prevent="closePopup"
         type="button">
         Закрыть
       </button>
@@ -20,7 +20,7 @@
       </button>
 
       <button
-        @click.stop.prevent="deleteItem"
+        @click.stop.prevent="delProjectItem"
         type="button">
         Удалить
       </button>
@@ -32,35 +32,45 @@
 export default {
   data() {
     return {
+      isOpen: false,
+      curModal: null
     };
   },
-  props: {
-    isOpen: Boolean,
+  props: { 
+    oneIsOpen: Boolean,
+    index: Number
   },
   methods: {
-    toggleDropdown() {
-      this.closeDropdown();
+    openPopup(event) {
+      this.isOpen = true
 
-      this.isOpenLocal = !this.isOpenLocal;
-      if (this.isOpenLocal) {
-        document.addEventListener('click', this.handleClickOutside);
+      document.addEventListener('click', this.handleClickOutside)
+    },
+    closePopup() {
+      this.isOpen = false
+
+      document.removeEventListener('click', this.handleClickOutside)
+    },
+    togglePopup() {
+      this.isOpen = !this.isOpen
+
+      if (this.isOpen) {
+        document.addEventListener('click', this.handleClickOutside)
       } else {
-        document.removeEventListener('click', this.handleClickOutside);
+        document.removeEventListener('click', this.handleClickOutside)
       }
     },
     handleClickOutside(event) {
-      // Проверяем, был ли клик совершен вне dropdown
       if (this.$refs.dropdownItem && !this.$refs.dropdownItem.contains(event.target)) {
-        this.isOpenLocal = false;
-        document.removeEventListener('click', this.handleClickOutside);
-        this.$emit('toggle');
+        this.closePopup()
+        // this.isOpenLocal = false;
+        // document.removeEventListener('click', this.handleClickOutside);
+        // this.$emit('toggle');
       }
     },
     renameItem() {},
-    deleteItem() {
-      this.$emit('delete');
-    },
-    closeDropdown() {
+    delProjectItem() {
+      this.$emit('delProjectItem');
     },
   },
   beforeUnmount() {

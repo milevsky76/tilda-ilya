@@ -9,9 +9,8 @@
         </div>
 
         <DropdownPopup
-          :isOpen="isOpen"
           :index="index"
-          @delete="handleDelete" />
+          @delProjectItem="delProjectItem" />
       </div>
 
       <div class="project-item__hr"></div>
@@ -44,23 +43,22 @@ import DropdownPopup from '@/components/Generic/DropdownPopup.vue'
 
 export default {
   data() {
-    return {
-    };
+    return { };
   },
   props: {
     project: {
       type: Object,
       require: true
     },
-    index: Number
+    index: Number,
   },
   components: {
     DropdownPopup
   },
   methods: {
-    handleDelete() {
-      this.$emit('deleteItem', this.index);
-    },
+    delProjectItem() {
+      this.$emit('delProjectItem', this.index);
+    }
   },
 }
 </script>

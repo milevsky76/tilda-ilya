@@ -8,7 +8,7 @@
         :key="project.id"
         :project="project"
         :index="i"
-        @deleteItem="handleDeleteItem" />
+        @delProjectItem="delProjectItem" />
       <li>
         <div></div>
       </li>
@@ -25,13 +25,16 @@
 import HomeItem from '@/components/HomeView/HomeItem.vue'
 
 export default {
+  data() {
+    return { }
+  },
   props: ['projects'],
   components: {
     HomeItem
   },
   methods: {
-    handleDeleteItem(itemId) {
-      this.projects.splice(itemId, 1);
+    delProjectItem(id) {
+      this.$emit('delProjectItem', id)
     }
   }
 }

@@ -8,7 +8,9 @@
     </div>
   </div>
 
-  <HomeList :projects="projects"/>
+  <HomeList
+    :projects="projects"
+    @delProjectItem="delProjectItem"/>
 </template>
 
 <script>
@@ -33,6 +35,9 @@ export default {
   methods: {
     addProjectItem(project) {
       this.projects.push(project);
+    },
+    delProjectItem(id) {
+      this.projects.splice(id, 1);
     }
   },
 }
