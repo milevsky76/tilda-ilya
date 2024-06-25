@@ -12,7 +12,7 @@
 
       <button
         type="button"
-        @click.prevent=""
+        @click.stop.prevent=""
       >Переименовать</button>
 
       <button

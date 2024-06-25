@@ -1,7 +1,12 @@
-.dropdown__more {
+.dropdown {
   position: absolute;
+  z-index: 0;
   right: 6px;
   top: 20px;
+}
+
+.dropdown__more {
+  display: block;
   width: 24px;
   height: 24px;
   background-color: transparent;
@@ -12,7 +17,6 @@
   border: none;
   outline: none;
   cursor: pointer;
-  z-index: 2;
   opacity: .3;
 
   &:hover,
@@ -24,13 +28,13 @@
 
 .dropdown__menu {
   position: absolute;
-  top: 44px;
+  top: 100%;
   right: 0;
   flex-direction: column;
   background-color: $primary-100;
   width: 150px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1000;
+  z-index: 100;
   color: $primary-400;
 }
 
