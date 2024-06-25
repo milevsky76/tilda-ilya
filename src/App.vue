@@ -4,5 +4,10 @@
 </template>
 
 <script>
-import { RouterView } from 'vue-router'
-</script>
+import HeaderApp from '@/components/HeaderApp.vue'
+
+export default {
+  components: {
+    HeaderApp
+  }
+}</script>

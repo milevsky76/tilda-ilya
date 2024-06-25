@@ -1,24 +1,29 @@
 <template>
-  <div class="dropdown" ref="dropdownItem" @click="toggleDropdown">
+  <div class="dropdown" ref="dropdownItem">
     <button
-      class="dropdown__more"
-      @click.prevent=""
-    ></button>
-    <div v-if="isOpen" class="dropdown__menu">
+      @click.stop.prevent
+      class="dropdown__more">
+    </button>
+    <div
+      v-if="isOpen"
+      class="dropdown__menu">
       <button
-        type="button"
-        @click.stop.prevent="closeDropdown"
-      >Закрыть</button>
+        @click.stop.prevent
+        type="button">
+        Закрыть
+      </button>
 
       <button
-        type="button"
-        @click.stop.prevent=""
-      >Переименовать</button>
+        @click.stop.prevent
+        type="button">
+        Переименовать
+      </button>
 
       <button
-        type="button"
         @click.stop.prevent="deleteItem"
-      >Удалить</button>
+        type="button">
+        Удалить
+      </button>
     </div>
   </div>
 </template>
@@ -27,7 +32,6 @@
 export default {
   data() {
     return {
-      isOpenLocal: false
     };
   },
   props: {
@@ -39,10 +43,8 @@ export default {
 
       this.isOpenLocal = !this.isOpenLocal;
       if (this.isOpenLocal) {
-        // Добавляем обработчик клика на документ
         document.addEventListener('click', this.handleClickOutside);
       } else {
-        // Удаляем обработчик клика с документа
         document.removeEventListener('click', this.handleClickOutside);
       }
     },
@@ -55,12 +57,10 @@ export default {
       }
     },
     renameItem() {},
-    deleteItem(index) {
-      this.closeDropdown();
+    deleteItem() {
       this.$emit('delete');
     },
     closeDropdown() {
-      this.$emit('toggle');
     },
   },
   beforeUnmount() {

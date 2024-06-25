@@ -1,24 +1,23 @@
 <template>
   <div class="project">
     <ul
-      class="project__list"
-      v-if="projects.length !== 0">
+      v-if="projects.length !== 0"
+      class="project__list">
       <HomeItem
         v-for="(project, i) of projects"
+        :key="project.id"
         :project="project"
         :index="i"
-        :key="project.id"
-        @toggle="toggleDropdown(index)"
-        @deleteItem="handleDeleteItem"
-      />
+        @deleteItem="handleDeleteItem" />
       <li>
         <div></div>
       </li>
     </ul>
     <h3
-      class="project__empty-text"
       v-show="projects.length === 0"
-    >Проектов нет</h3>
+      class="project__empty-text">
+      Проектов нет
+    </h3>
   </div>
 </template>
 
@@ -31,14 +30,6 @@ export default {
     HomeItem
   },
   methods: {
-    toggleDropdown(index) {
-      this.projects.forEach((project, idx) => {
-        console.log(project, idx);
-        if (idx !== index) {
-          this.$set(project, 'isOpen', false);
-        }
-      });
-    },
     handleDeleteItem(itemId) {
       this.projects.splice(itemId, 1);
     }
