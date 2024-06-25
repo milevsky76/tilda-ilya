@@ -6,12 +6,14 @@ $black: #000000;
 
 $accent-400: #ff8562;
 $primary-100: #f0f0f0;
+$primary-150: #eeeeee;
+$primary-200: #d9d9d9;
+$primary-300: #cccccc;
 $primary-400: #333333;
 
 $responsive-ios: 812px;
 
 $font-main: "tfutura", sans-serif;
-// $font-second: "Bank Gothic", sans-serif;
 
 // Transitions
 $transition-duration-default: 0.3s;
@@ -19,11 +21,11 @@ $transition-delay-default: 0.3s;
 $transition-default: 0.3s ease-in-out;
 
 $breakpoints: (
-	mobile-small: 575px,
-	mobile: 767px,
-	admin-bar: 782px,
-	tablet: 1024px,
-	small-desktop: 1279px,
-	desktop: 1539px,
-	large-desktop: 1719px,
+  mobile-small: 575px,
+  mobile: 767px,
+  admin-bar: 782px,
+  tablet: 1024px,
+  small-desktop: 1279px,
+  desktop: 1539px,
+  large-desktop: 1719px,
 );

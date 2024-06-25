@@ -1,0 +1,39 @@
+.project {
+  width: 100%;
+  max-width: 1160px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.project__list {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 40px;
+  margin: 0;
+  padding: 0;
+  padding-bottom: 50px;
+  list-style: none;
+
+  @include breakpoint-down(mobile) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+li {
+  width: 100%;
+  height: 265px;
+}
+
+li:last-child div {
+  width: 100%;
+  height: 265px;
+  border: 1px dashed $primary-300;
+  background-color: transparent;
+}
+
+.project__empty-text {
+  font-size: 32px;
+  font-weight: bold;
+}

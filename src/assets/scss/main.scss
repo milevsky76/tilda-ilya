@@ -5,3 +5,12 @@
 @import "generic/fonts";
 @import "generic/base";
 @import "generic/helpers";
+
+@import "components/header-app";
+
+@import "components/home-view/home-view";
+@import "components/home-view/home-item-add";
+@import "components/home-view/home-list";
+@import "components/home-view/home-item";
+
+@import "components/generic/dropdown-popup";

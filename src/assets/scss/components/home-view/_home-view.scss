@@ -1,0 +1,31 @@
+.home-panel {
+  width: 100%;
+  max-width: 1160px;
+  margin-top: 50px;
+  margin-left: auto;
+  margin-bottom: 40px;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.home-panel__wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.home-panel__title {
+  font-size: 18px;
+  font-weight: 300;
+  opacity: .5;
+  cursor: default;
+}
+
+.home-panel__right-side {
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 18px;
+  align-items: center;
+  gap: 20px;
+}

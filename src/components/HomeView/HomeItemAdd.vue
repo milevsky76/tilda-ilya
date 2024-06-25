@@ -1,28 +1,28 @@
 <template>
-	<div
-		class="td-sites-uppanel__rightbtn-table"
-		v-on:click="onSubmit"
-	>
-		<svg width="15px" height="15px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"><g><polygon style="fill:#fff;" points="26.79 13 17 13 17 3.21 13 3.21 13 13 3.21 13 3.21 17 13 17 13 26.79 17 26.79 17 17 26.79 17 26.79 13"></polygon></g></svg>
-		<span>Создать новый сайт</span>
-	</div>
+  <button
+    class="add-project"
+    type="button"
+    @click="addProjectItem"
+  >
+    <span class="add-project__icon"><IconPlus /></span>
+    <span class="add-project__text">Создать новый сайт</span>
+  </button>
 </template>
 
 <script>
-export default {
-  methods: {
-    onSubmit() {
-      const newProject = {
-				id: Date.now(),
-				name: 'My project'
-			}
+import IconPlus from '@/components/icons/IconPlus.vue'
 
-			this.$emit('addProjectItem', newProject)
+export default {
+  components: {
+    IconPlus
+  },
+  methods: {
+    addProjectItem() {
+      this.$emit('addProjectItem', {
+        id: Date.now(),
+        name: 'My project'
+      })
     }
   }
 }
 </script>
-
-<style scoped>
-
-</style>

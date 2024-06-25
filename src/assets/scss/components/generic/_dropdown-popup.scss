@@ -1,0 +1,52 @@
+.dropdown__more {
+  position: absolute;
+  right: 6px;
+  top: 20px;
+  width: 24px;
+  height: 24px;
+  background-color: transparent;
+  background-image: url('@/assets/dot.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  z-index: 2;
+  opacity: .3;
+
+  &:hover,
+  &:focus {
+    opacity: 1;
+    background-image: url('@/assets/dot-hover.svg');
+  }
+}
+
+.dropdown__menu {
+  position: absolute;
+  top: 44px;
+  right: 0;
+  flex-direction: column;
+  background-color: $primary-100;
+  width: 150px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  color: $primary-400;
+}
+
+.dropdown__menu button {
+  width: 100%;
+  padding: 10px;
+  text-align: left;
+  border: none;
+  background-color: inherit;
+  cursor: pointer;
+}
+
+.dropdown__menu button:hover {
+  background-color: $primary-200;
+}
+
+.dropdown__menu.show {
+  display: block;
+}

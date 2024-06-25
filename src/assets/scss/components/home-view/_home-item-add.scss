@@ -1,0 +1,33 @@
+.add-project {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: none;
+
+  &:hover .add-project__text,
+  &:focus .add-project__text {
+    color: $accent-400;
+  }
+}
+
+.add-project__icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  width: 25px;
+  height: 25px;
+  color: $white;
+  background-color: $accent-400;
+  border-radius: 50%;
+
+  svg {
+    display: block;
+    width: 15px;
+    height: 15px;
+  }
+}
+
+.add-project__text {
+  transition: color $transition-default;
+}
