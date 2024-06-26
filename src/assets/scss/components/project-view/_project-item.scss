@@ -19,13 +19,11 @@
   display: block;
   width: 70px;
   height: 70px;
-  margin-right: 50px;
   border-radius: 50%;
   border: 1px solid #d5d5d5;
   overflow: hidden;
 
   @include breakpoint-down(mobile) {
-    margin-right: 0;
     width: 50px;
     height: 50px;
   }
@@ -46,6 +44,12 @@
 
 .pages-list__name-block {
   display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.pages-list__name-text {
+  display: flex;
   align-items: center;
   gap: 15px;
   line-height: 32px;
@@ -63,6 +67,13 @@
 }
 
 .pages-list__page-name {}
+
+.pages-list__info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  color: #bbb;
+}
 
 .pages-list__settings {
   display: flex;

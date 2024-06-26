@@ -4,10 +4,9 @@
       v-if="projects.length !== 0"
       class="project__list">
       <HomeItem
-        v-for="(project, i) of projects"
+        v-for="project of projects"
         :key="project.id"
-        :project="project"
-        :index="i" />
+        :project="project"/>
       <li>
         <div></div>
       </li>

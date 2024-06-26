@@ -1,6 +1,7 @@
 <template>
   <button
-    @click="addPageItem"
+    @click="this.$emit('add')"
+    
     class="project-view__new-page"
     type="button">
     <span class="project-view__new-page-icon">
@@ -11,11 +12,4 @@
 </template>
 
 <script>
-export default {
-  methods: {
-    addPageItem() {
-      this.$emit('addPageItem')
-    }
-  }
-}
 </script>

@@ -3,21 +3,28 @@
     <div class="pages-list__wrapper">
       <div class="pages-list__right">
         <RouterLink
-          :to="`/page/${index}/edit`"
+          :to="`/page/${page.id}/edit`"
           class="pages-list__image-block">
           <div class="pages-list__image">
             <img :src="page.image" alt="">
           </div>
         </RouterLink>
 
-        <RouterLink
-          :to="`/page/${index}/edit`"
-          class="pages-list__name-block">
-          <span class="pages-list__home-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 32" width="14px"><path d="M27 11L14-.06 1 11v21.06h26V11zm-8 21H9V20.91h10z"></path></svg>
-          </span>
-          <span class="pages-list__page-name">{{ page.name + ' ' + index }}</span>
-        </RouterLink>
+        <div class="pages-list__name-block">
+          <RouterLink
+            :to="`/page/${page.id}/edit`"
+            class="pages-list__name-text">
+            <!-- <span class="pages-list__home-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 32" width="14px"><path d="M27 11L14-.06 1 11v21.06h26V11zm-8 21H9V20.91h10z"></path></svg>
+            </span> -->
+            <span class="pages-list__page-name">{{ page.title + ' ' + page.id }}</span>
+          </RouterLink>
+
+          <div class="pages-list__info">
+            <span class="pages-list__info-descr">Описание: {{ page.descr }}</span>
+            <span class="pages-list__info-alias">Адрес: {{ page.address }}</span>
+          </div>
+        </div>
       </div>
 
       <div class="pages-list__right">
@@ -34,18 +41,18 @@
           @close="isPopupOpen = false">
             <PopupSetting
               :page="page"
-              :index="index"
               @closePopup="isPopupOpen = false"/>
         </Popup>
 
-        <ProjectItemDel @delPageItem="delPageItem" />
-        
+        <ProjectItemDel @remove="removePage(page.id)" />
       </div>
     </div>
   </li>
 </template>
 
 <script>
+import { usePagesStore } from '@/stores/modules/pages';
+
 import ProjectItemDel from '@/components/ProjectView/ProjectItemDel.vue'
 
 import Popup from '@/components/Generic/Popup.vue'
@@ -61,16 +68,15 @@ export default {
     page: {
       type: Object,
       require: true
-    },
-    index: Number,
+    }
   },
   components: {
     ProjectItemDel, Popup, PopupSetting
   },
   methods: {
-    delPageItem() {
-      this.$emit('delPageItem', this.index)
-    }
+    removePage(id) {
+      usePagesStore().removePage(id);
+    },
   },
 }
 </script>

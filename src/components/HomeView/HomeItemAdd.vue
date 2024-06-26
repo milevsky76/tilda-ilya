@@ -21,10 +21,7 @@ export default {
   },
   methods: {
     addProjectItem() {
-      useProjectsStore().addProject({
-        id: Date.now(),
-        title: "My project"
-      })
+      useProjectsStore().addProject()
     }
   }
 }

@@ -33,10 +33,9 @@
         </div>
 
         <div class="project-view__panel-bottom">
-          <div class="project-view__project-name">{{ project ? project.name + ' ' + id : '' }}</div>
+          <div class="project-view__project-name">{{ project.title + ' ' + id }}</div>
 
-          <ProjectItemAdd
-            @click="addPageItem"/>
+          <ProjectItemAdd @add="addPage(+id)"/>
         </div>
       </div>
     </div>
@@ -44,15 +43,14 @@
     <div class="project-view__pages-list">
       <div class="project-view__pages-list-title">Страницы сайта:</div>
 
-      <ProjectList
-        :pages="pages"/>
+      <ProjectList :pages="pages"/>
     </div>
   </div>
 </template>
 
 <script>
-import JsonProjectsData from '@/data/JsonProjectsData.json';
-import JsonPagesData from '@/data/JsonPagesData.json';
+import { useProjectsStore } from '@/stores/modules/projects';
+import { usePagesStore } from '@/stores/modules/pages';
 
 import ProjectList from '@/components/ProjectView/ProjectList.vue'
 import ProjectItemAdd from '@/components/ProjectView/ProjectItemAdd.vue'
@@ -63,32 +61,34 @@ import PopupDomain from '@/components/Generic/PopupDomain.vue'
 export default {
   data() {
     return {
-      pages: [],
-      projects: [],
-      project: null,
       isPopupOpen: false,
     };
   },
-  props: ['id'],
+  props: {
+    id: {
+      type: String,
+      required: true,
+    }
+  },
   components: {
     ProjectList, ProjectItemAdd, Popup, PopupDomain
   },
   methods: {
-    addPageItem() {
-      this.pages.push({
-        id: Date.now(),
-        name: 'Page'
-      })
+    addPage(projectId) {
+      usePagesStore().addPage(projectId);
     },
     handleSaveDomain(domainName) {
       console.log(domainName)
       this.isPopupOpen = false
     }
   },
-  mounted() {
-    this.pages = JsonPagesData
-    this.projects = JsonProjectsData
-    this.project = this.projects[this.id]
+  computed: {
+    project() {
+      return useProjectsStore().getProjectById(+this.id);
+    },
+    pages() {
+      return usePagesStore().getPagesByProjectId(this.project.id);
+    },
   },
 };
 </script>

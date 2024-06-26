@@ -1,16 +1,14 @@
 <template>
   <li class="project-item">
     <RouterLink
-      :to="`/project/${index}`"
+      :to="`/project/${project.id}`"
       class="project-item__wrapper">
       <div class="project-item__header">
         <div class="project-item__title">
-          {{ project.title + ' ' + index }}
+          {{ project.title + ' ' + project.id }}
         </div>
 
-        <DropdownPopup
-          :index="index"
-          @remove="removeProject(this.index)" />
+        <DropdownPopup @remove="removeProject(project.id)" />
       </div>
 
       <div class="project-item__hr"></div>
@@ -30,7 +28,7 @@
             <svg width="12" height="12" viewBox="0 0 26.14 26.14" xmlns="http://www.w3.org/2000/svg" fill="currentColor" role="img" aria-hidden="true"><path d="M20.14 23.14H3V6h9.57V3H0v23.14h23.14V13.57h-3v9.57z"></path><path d="M16.14 0v3h4.88L7.24 16.78l2.12 2.12L23.14 5.12V10h3V0h-10z"></path></svg>
           </span>
           <span class="controls__text">
-            <RouterLink :to="`/project/${index}/preview`">/project/{{ index }}/preview</RouterLink>
+            <RouterLink :to="`/project/${project.id}/preview`">/project/{{ project.id }}/preview</RouterLink>
           </span>
         </a>
       </div>
@@ -48,15 +46,14 @@ export default {
     project: {
       type: Object,
       require: true
-    },
-    index: Number,
+    }
   },
   components: {
     DropdownPopup
   },
   methods: {
-    removeProject(index) {
-      useProjectsStore().removeProject(index);
+    removeProject(id) {
+      useProjectsStore().removeProject(id);
     },
   },
 }

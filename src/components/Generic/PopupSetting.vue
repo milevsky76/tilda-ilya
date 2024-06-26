@@ -130,8 +130,7 @@ export default {
     };
   },
   props: {
-    page: Object,
-    index: Number,
+    page: Object
   },
   methods: {
     closePopup() {

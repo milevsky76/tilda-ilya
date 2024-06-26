@@ -1,6 +1,6 @@
 <template>
   <button
-    @click="delPageItem"
+    @click="this.$emit('remove')"
     class="pages-list__page-del"
     type="button">
     <span class="pages-list__page-del-icon">
@@ -11,11 +11,4 @@
 </template>
 
 <script>
-export default {
-  methods: {
-    delPageItem() {
-      this.$emit('delPageItem');
-    },
-  }
-}
 </script>
