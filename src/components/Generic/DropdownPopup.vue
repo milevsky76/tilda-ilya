@@ -20,7 +20,7 @@
       </button>
 
       <button
-        @click.stop.prevent="delProjectItem"
+        @click.stop.prevent="this.$emit('remove')"
         type="button">
         Удалить
       </button>
@@ -32,8 +32,7 @@
 export default {
   data() {
     return {
-      isOpen: false,
-      curModal: null
+      isOpen: false
     };
   },
   props: { 
@@ -68,10 +67,7 @@ export default {
         // this.$emit('toggle');
       }
     },
-    renameItem() {},
-    delProjectItem() {
-      this.$emit('delProjectItem');
-    },
+    renameItem() {}
   },
   beforeUnmount() {
     // Убеждаемся, что обработчик событий очищается перед удалением компонента

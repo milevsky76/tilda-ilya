@@ -11,12 +11,19 @@
 </template>
 
 <script>
+import { useProjectsStore } from '@/stores/modules/projects';
+
 export default {
+  computed: {
+    projects() {
+      return useProjectsStore().projects;
+    },
+  },
   methods: {
     addProjectItem() {
-      this.$emit('addProjectItem', {
+      useProjectsStore().addProject({
         id: Date.now(),
-        name: 'My project'
+        title: "My project"
       })
     }
   }

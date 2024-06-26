@@ -5,12 +5,12 @@
       class="project-item__wrapper">
       <div class="project-item__header">
         <div class="project-item__title">
-          {{ project.name + ' ' + index }}
+          {{ project.title + ' ' + index }}
         </div>
 
         <DropdownPopup
           :index="index"
-          @delProjectItem="delProjectItem" />
+          @remove="removeProject(this.index)" />
       </div>
 
       <div class="project-item__hr"></div>
@@ -41,10 +41,9 @@
 <script>
 import DropdownPopup from '@/components/Generic/DropdownPopup.vue'
 
+import { useProjectsStore } from '@/stores/modules/projects'
+
 export default {
-  data() {
-    return { };
-  },
   props: {
     project: {
       type: Object,
@@ -56,9 +55,9 @@ export default {
     DropdownPopup
   },
   methods: {
-    delProjectItem() {
-      this.$emit('delProjectItem', this.index);
-    }
+    removeProject(index) {
+      useProjectsStore().removeProject(index);
+    },
   },
 }
 </script>

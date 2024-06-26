@@ -7,8 +7,7 @@
         v-for="(project, i) of projects"
         :key="project.id"
         :project="project"
-        :index="i"
-        @delProjectItem="delProjectItem" />
+        :index="i" />
       <li>
         <div></div>
       </li>
@@ -24,17 +23,19 @@
 <script>
 import HomeItem from '@/components/HomeView/HomeItem.vue'
 
+import { useProjectsStore } from '@/stores/modules/projects';
+
 export default {
   data() {
-    return { }
+    return {
+    }
   },
-  props: ['projects'],
   components: {
     HomeItem
   },
-  methods: {
-    delProjectItem(id) {
-      this.$emit('delProjectItem', id)
+  computed: {
+    projects() {
+      return useProjectsStore().projects;
     }
   }
 }
