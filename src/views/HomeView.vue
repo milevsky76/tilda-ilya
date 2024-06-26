@@ -14,6 +14,8 @@
 </template>
 
 <script>
+import JsonProjectsData from '@/data/JsonProjectsData.json';
+
 import HomeList from '@/components/HomeView/HomeList.vue'
 import HomeItemAdd from '@/components/HomeView/HomeItemAdd.vue'
 
@@ -21,12 +23,7 @@ export default {
   name: 'App',
   data() {
     return {
-      projects: [
-        { id: 1, name: 'My project' },
-        { id: 2, name: 'My project' },
-        { id: 3, name: 'My project' },
-        { id: 4, name: 'My project' }
-      ]
+      projects: []
     }
   },
   components: {
@@ -40,5 +37,8 @@ export default {
       this.projects.splice(id, 1);
     }
   },
+  mounted() {
+    this.projects = JsonProjectsData;
+  }
 }
 </script>

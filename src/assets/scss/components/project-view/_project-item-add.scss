@@ -1,0 +1,32 @@
+.project-view__new-page {
+  padding: 0 25px;
+  height: 50px;
+  background-color: #ff8562;
+  border-radius: 55px;
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 20px;
+  line-height: 20px;
+  font-weight: 300;
+  border: none;
+  cursor: pointer;
+
+  transition: background-color $transition-default;
+
+  &:hover,
+  &:focus {
+    background-color: #fd784c;
+  }
+}
+
+.project-view__new-page-icon {
+  svg {
+    display: block;
+    width: 14px;
+    height: 14px;
+  }
+}
+
+.project-view__new-page-text {}

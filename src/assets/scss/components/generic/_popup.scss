@@ -1,0 +1,18 @@
+.backdrop {
+  position: fixed;
+  z-index: 101;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  display: flex;
+  justify-content: center;
+
+  background-image: linear-gradient(to top right, rgba(227, 101, 87, .8), rgba(238, 174, 117, .9));
+}
+
+.popup {
+  margin-top: auto;
+  margin-bottom: auto;
+}

@@ -9,10 +9,16 @@
 @import "components/header-app";
 
 @import "components/home-view/home-view";
-@import "components/home-view/home-item-add";
 @import "components/home-view/home-list";
 @import "components/home-view/home-item";
+@import "components/home-view/home-item-add";
 
+@import "components/generic/popup";
 @import "components/generic/dropdown-popup";
+@import "components/generic/popup-setting";
 
 @import "components/project-view/project-view";
+@import "components/project-view/project-list";
+@import "components/project-view/project-item";
+@import "components/project-view/project-item-del";
+@import "components/project-view/project-item-add";
