@@ -1,16 +1,29 @@
 <template>
-  <HeaderPage :id="id" :pageId="pageId"/>
   <div>
-    <div v-for="(block, index) in blocks" :key="index" :class="block.type">
+    <div 
+      v-for="(block, index) in blocks"
+      :key="index"
+      :class="block.type">
       <template v-if="block.type === 'text'">
         <div class="block-text edit">
-          <p contenteditable @input="updateText($event, index)">{{ block.content }}</p>
+          <p
+            contenteditable
+            @input="updateText($event, index)">
+              {{ block.content }}
+          </p>
         </div>
       </template>
+
       <template v-else-if="block.type === 'image'">
         <div class="block-image edit">
-          <img :src="block.image" alt="Изображение">
-          <p contenteditable @input="updateText($event, index)">{{ block.content }}</p>
+          <img
+            :src="block.image"
+            alt="Изображение">
+          <p
+            contenteditable
+            @input="updateText($event, index)">
+              {{ block.content }}
+          </p>
         </div>
       </template>
     </div>
@@ -19,15 +32,17 @@
   <div class="page-edit">
     <div class="page-edit__middle-button">
       <button
-        @click="isPopupOpen = true"
         class="project-view__new-page"
-        type="button">
+        type="button"
+        @click="isPopupOpen = true">
           <span class="project-view__new-page-text">Добавить запись</span>
       </button>
     </div>
   </div>
+
   <PopupLeft
     :isOpen="isPopupOpen"
+    :pageId="pageId"
     @close="isPopupOpen = false"/>
 </template>
 
@@ -36,25 +51,24 @@ import { useProjectsStore } from '@/stores/modules/projects';
 import { usePagesStore } from '@/stores/modules/pages';
 import { usePageBlocksStore } from '@/stores/modules/blocks';
 
-import PopupLeft from '@/components/Generic/PopupLeft.vue';
-
 import HeaderPage from '@/components/HeaderPage.vue';
 
+import PopupLeft from '@/components/Generic/PopupLeft.vue';
+
 export default {
-  name: 'PageBlocks',
   data() {
     return {
-      isPopupOpen: false,
+      isPopupOpen: false
     };
   },
   props: {
     id: {
       type: String,
-      required: true,
+      required: true
     },
     pageId: {
       type: String,
-      required: true,
+      required: true
     }
   },
   components: {
@@ -68,14 +82,14 @@ export default {
   },
   computed: {
     pages() {
-      return usePagesStore().getPageById(+this.id)
+      return usePagesStore().getPageById(+this.id);
     },
     project() {
-      return useProjectsStore().getProjectById(this.pages.projectId)
+      return useProjectsStore().getProjectById(this.pages.projectId);
     },
     blocks() {
-      return usePageBlocksStore().getBlocksByPageId(+this.pageId)
+      return usePageBlocksStore().getBlocksByPageId(+this.pageId);
     },
-  },
+  }
 };
 </script>

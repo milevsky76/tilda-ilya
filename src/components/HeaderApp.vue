@@ -10,7 +10,11 @@
 
     <nav class="header__nav">
       <div class="header__nav-left">
-        <RouterLink :to="'/'" class="header__nav-link header__nav-link--active">Мои сайты</RouterLink>
+        <RouterLink
+          :to="'/'"
+          class="header__nav-link header__nav-link--active">
+            Мои сайты
+        </RouterLink>
       </div>
 
       <div class="header__nav-right">

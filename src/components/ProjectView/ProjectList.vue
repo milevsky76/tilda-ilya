@@ -10,7 +10,7 @@
   <h3
     v-show="pages.length === 0"
     class="pages-list__empty-text">
-    Страниц сайта нет
+      Страниц сайта нет
   </h3>
 </template>
 

@@ -1,29 +1,25 @@
 <template>
-  <div @mousedown.stop class="popup-setting">
+  <div
+    class="popup-setting"
+    @mousedown.stop>
     <div class="popup-setting__head">
       <div class="popup-setting__head-top">
         <div class="popup-setting__title">Настройки страницы</div>
-        <div 
-          @click="closePopup"
-          class="popup-setting__close"></div>
+        <div
+          class="popup-setting__close"
+          @click="closePopup"></div>
       </div>
 
       <div class="popup-setting__menu-wrapper">
         <ul class="popup-setting__menu">
           <li
             :class="{'popup-setting__item': true, 'popup-setting__item--active': activeTab === 'main' }">
-            <button
-              @click="activeTab = 'main'">
-                Главное
-            </button>
+            <button @click="activeTab = 'main'">Главное</button>
           </li>
           
           <li 
             :class="{'popup-setting__item': true, 'popup-setting__item--active': activeTab === 'badge' }">
-            <button
-              @click="activeTab = 'badge'">
-                Бейджик
-            </button>
+            <button @click="activeTab = 'badge'">Бейджик</button>
           </li>
         </ul>
       </div>
@@ -34,7 +30,11 @@
         <div v-show="activeTab === 'main'">
           <div class="popup-setting__group">
             <label class="popup-setting__group-title" for="modalInputTitle">Заголовок</label>
-            <div ref="titleError" class="popup-setting__error-message">Заполните поле</div>
+            <div
+              v-show="messageTitleError !== ''"
+              class="popup-setting__error-message">
+                {{ messageTitleError }}
+            </div>
             <input
               v-model="editedPage.title"
               class="popup-setting__input"
@@ -46,7 +46,11 @@
 
           <div class="popup-setting__group">
             <label class="popup-setting__group-title" for="modalInputDescr">Описание</label>
-            <div ref="descrError" class="popup-setting__error-message">Заполните поле</div>
+            <div
+              v-show="messageDescrError !== ''"
+              class="popup-setting__error-message">
+                {{ messageDescrError }}
+            </div>
             <input
               v-model="editedPage.descr"
               class="popup-setting__input"
@@ -58,7 +62,11 @@
             
           <div class="popup-setting__group">
             <label class="popup-setting__group-title" for="modalInputAddress">Адрес</label>
-            <div ref="addressError" class="popup-setting__error-message">Заполните поле</div>
+            <!-- <div
+              v-show="messageAddressError !== ''"
+              class="popup-setting__error-message">
+                {{ messageAddressError }}
+            </div> -->
             <input
               v-model="editedPage.address"
               class="popup-setting__input"
@@ -70,8 +78,11 @@
         </div>
 
         <div v-show="activeTab === 'badge'">
-          <img v-show="editedPage.image" :src="editedPage.image" alt="Selected Image" style="width: 200px; height: 133px;">
-          <!-- <input type="hidden" v-model="editedPage.image"> -->
+          <img
+            v-show="editedPage.image"
+            :src="editedPage.image"
+            class="popup-setting__current-image"
+            alt="">
           <div
             v-if="images.length === 0 && isSearch"
             class="popup-setting__error-message">
@@ -87,9 +98,9 @@
             placeholder="Бейджик">
 
           <button
-            @click="getImages"
             class="popup-setting__find-white"
-            type="button">
+            type="button"
+            @click="getImages">
               Найти
           </button>
           <div class="popup-setting__images">
@@ -99,24 +110,24 @@
               class="popup-setting__image-wrap">
                 <img
                   :src="image.urls.thumb"
-                  @click="selectImage(image.urls.thumb)"
-                  alt="">
+                  alt=""
+                  @click="selectImage(image.urls.thumb)">
             </div>
           </div>
         </div>
 
         <div class="popup-setting__bottoms">
           <button
-            @click="closePopup"
             class="popup-setting__btn-white"
-            type="button">
+            type="button"
+            @click="closePopup">
               Закрыть
           </button>
 
           <button
-            @click="saveChanges"
             class="popup-setting__popup-btn"
-            type="button">
+            type="button"
+            @click="saveChanges">
               Сохранить изменения
           </button>
         </div>
@@ -133,6 +144,9 @@ export default {
     return {
       activeTab: 'main',
       editedPage: {},
+      messageTitleError: '',
+      messageDescrError: '',
+      // messageAddressError: '',
       searchQuery: '',
       isSearch: false,
       images: []
@@ -144,7 +158,7 @@ export default {
   watch: {
     page: {
       handler(newVal) {
-        this.editedPage = { ...newVal };
+        this.editedPage = { ...newVal }
       },
       immediate: true
     }
@@ -155,31 +169,35 @@ export default {
     },
     saveChanges() {
       if (this.validateForm()) {
-        console.log(this.editedPage)
-        this.$emit('save', this.editedPage);
+        this.$emit('save', this.editedPage)
       }
     },
     selectImage(src) {
-      console.log(src)
-      this.editedPage.image = src;
+      this.editedPage.image = src
     },
     validateForm() {
-      let valid = true;
+      let valid = true
       
       if (this.editedPage.title === '') {
-        valid = false;
+        valid = false
+        this.messageTitleError = 'Заполните поле'
+      } else {
+        this.messageTitleError = ''
       }
-      this.$refs.titleError.style.display = this.editedPage.title === '' ? 'block' : 'none';
 
       if (this.editedPage.descr === '') {
-        valid = false;
+        valid = false
+        this.messageDescrError = 'Заполните поле'
+      } else {
+        this.messageDescrError = ''
       }
-      this.$refs.descrError.style.display = this.editedPage.descr === '' ? 'block' : 'none';
 
       // if (this.editedPage.address === '') {
       //   valid = false;
+      //   this.messageAddressError = 'Заполните поле'
+      // } else {
+      //   this.messageAddressError = ''
       // }
-      // this.$refs.addressError.style.display = this.editedPage.address === '' ? 'block' : 'none';
       
       return valid;
     },

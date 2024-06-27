@@ -9,6 +9,7 @@
             <p>{{ block.content }}</p>
           </div>
         </template>
+
         <template v-else-if="block.type === 'image'">
           <div class="block-image">
             <img :src="block.image" alt="Изображение">
@@ -25,32 +26,31 @@ import { usePagesStore } from '@/stores/modules/pages';
 import { usePageBlocksStore } from '@/stores/modules/blocks';
 
 export default {
-  name: 'PageBlocks',
   data() {
     return {
-      isPopupOpen: false,
+      isPopupOpen: false
     };
   },
   props: {
     id: {
       type: String,
-      required: true,
+      required: true
     },
     pageId: {
       type: String,
-      required: true,
+      required: true
     }
   },
   computed: {
     pages() {
-      return usePagesStore().getPageById(+this.id)
+      return usePagesStore().getPageById(+this.id);
     },
     project() {
-      return useProjectsStore().getProjectById(this.pages.projectId)
+      return useProjectsStore().getProjectById(this.pages.projectId);
     },
     blocks() {
-      return usePageBlocksStore().getBlocksByPageId(+this.pageId)
+      return usePageBlocksStore().getBlocksByPageId(+this.pageId);
     },
-  },
+  }
 };
 </script>

@@ -2,10 +2,10 @@
   <div
     v-if="isOpen"
     :class="['backdrop', { 'show': isOpen }]">
-    <div 
-      @mousedown="close"
-      class="popup">
-        <slot></slot>
+    <div
+      class="popup"
+      @mousedown="close">
+      <slot></slot>
     </div>
   </div>
 </template>

@@ -14,21 +14,17 @@
     <h3
       v-show="projects.length === 0"
       class="project__empty-text">
-      Проектов нет
+        Проектов нет
     </h3>
   </div>
 </template>
 
 <script>
+import { useProjectsStore } from '@/stores/modules/projects'
+
 import HomeItem from '@/components/HomeView/HomeItem.vue'
 
-import { useProjectsStore } from '@/stores/modules/projects';
-
 export default {
-  data() {
-    return {
-    }
-  },
   components: {
     HomeItem
   },

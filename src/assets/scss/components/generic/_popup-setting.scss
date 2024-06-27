@@ -107,8 +107,12 @@
   letter-spacing: 1px;
 }
 
+.popup-setting__current-image {
+  width: 200px;
+  height: 133px;
+}
+
 .popup-setting__error-message {
-  display: none;
   text-align: right;
   color: red;
   opacity: .5;

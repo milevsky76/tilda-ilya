@@ -61,6 +61,7 @@ export default {
     },
     handleClickOutside(event) {
       const refDropdownItem = this.$refs.dropdownItem
+      
       if (refDropdownItem && !refDropdownItem.contains(event.target)) {
         this.closePopup()
         // this.isOpenLocal = false;
@@ -72,7 +73,7 @@ export default {
   },
   beforeUnmount() {
     // Убеждаемся, что обработчик событий очищается перед удалением компонента
-    document.removeEventListener('click', this.handleClickOutside);
+    document.removeEventListener('click', this.handleClickOutside)
   }
 };
 </script>

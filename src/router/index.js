@@ -46,7 +46,10 @@ const router = createRouter({
       path: '/project/:id/page/:pageId/preview',
       name: 'PagePreviewView',
       component: PagePreviewView,
-      props: true
+      props: true,
+      meta: {
+        header: null
+      }
     },
     {
       path: '/profile',

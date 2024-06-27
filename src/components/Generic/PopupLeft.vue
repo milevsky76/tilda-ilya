@@ -22,9 +22,9 @@
           </button>
 
           <button
-            @click="close"
             class="popup-left__close"
-            type="button">
+            type="button"
+            @click="close">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="#333333" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="feather feather-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>
           </button>
         </div>
@@ -34,8 +34,8 @@
             v-for="blockType in blocksTypes"
             :key="blockType.type"
             :class="['popup-left__types-block', {'active': activeTab == blockType.type}]"
-            @click="activeTab = blockType.type"
-            type="button">
+            type="button"
+            @click="activeTab = blockType.type">
               {{ blockType.title }}
           </button>
         </div>
@@ -83,6 +83,10 @@ export default {
     isOpen: {
       type: Boolean,
       required: true
+    },
+    pageId: {
+      type: String,
+      required: true,
     }
   },
   emits: {
@@ -95,6 +99,7 @@ export default {
     },
     addTextBlock() {
       const textBlock = {
+        pageId: +this.pageId,
         content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, officiis?'
       }
 
@@ -102,6 +107,7 @@ export default {
     },
     addImageBlock() {
       const imageBlock = {
+        pageId: +this.pageId,
         content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, officiis?',
         image: 'https://plus.unsplash.com/premium_photo-1718119453300-73be4e1b6212?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
       }
@@ -113,6 +119,6 @@ export default {
     blocksTypes() {
       return usePageBlocksStore().blocksTypes
     }
-  },
+  }
 };
 </script>

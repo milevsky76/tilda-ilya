@@ -1,11 +1,13 @@
 <template>
-  <div class="popup-setting">
+  <div
+    class="popup-setting"
+    @mousedown.stop>
     <div class="popup-setting__head">
       <div class="popup-setting__head-top">
         <div class="popup-setting__title">Подключение домена</div>
-        <div 
-          @click="closePopup"
-          class="popup-setting__close"></div>
+        <div
+          class="popup-setting__close"
+          @click="closePopup"></div>
       </div>
     </div>
 
@@ -14,7 +16,7 @@
         <div class="popup-setting__group">
           <label class="popup-setting__group-title" for="modalInputDomain">Домен</label>
           <div
-            v-if="validationError"
+            v-show="validationError !== ''"
             class="popup-setting__error-message">
               {{ validationError }}
           </div>
@@ -30,15 +32,15 @@
 
         <div class="popup-setting__bottoms">
           <button
-            @click="closePopup"
             class="popup-setting__btn-white"
-            type="button">
+            type="button"
+            @click="closePopup">
               Закрыть
           </button>
           <button
-            @click="saveDomain"
             class="popup-setting__popup-btn"
-            type="button">
+            type="button"
+            @click="saveDomain">
               Сохранить
           </button>
         </div>
@@ -52,7 +54,7 @@ export default {
   data() {
     return {
       domainName: '',
-      validationError: '',
+      validationError: ''
     };
   },
   methods: {

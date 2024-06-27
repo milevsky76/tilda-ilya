@@ -16,7 +16,6 @@ import HomeList from '@/components/HomeView/HomeList.vue'
 import HomeItemAdd from '@/components/HomeView/HomeItemAdd.vue'
 
 export default {
-  name: 'Home',
   components: {
     HomeList, HomeItemAdd
   }
