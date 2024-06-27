@@ -1,7 +1,11 @@
 <template>
-  <div v-if="isOpen" class="backdrop" @mousedown="close">
-    <div class="popup" @mousedown.stop>
-      <slot></slot>
+  <div
+    v-if="isOpen"
+    :class="['backdrop', { 'show': isOpen }]">
+    <div 
+      @mousedown="close"
+      class="popup">
+        <slot></slot>
     </div>
   </div>
 </template>

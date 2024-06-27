@@ -1,18 +1,24 @@
 .backdrop {
   position: fixed;
-  z-index: 101;
+  z-index: 1000;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-
-  display: flex;
-  justify-content: center;
-
+  width: 100vw;
+  height: 100vh;
   background-image: linear-gradient(to top right, rgba(227, 101, 87, .8), rgba(238, 174, 117, .9));
+  overflow-x: hidden;
+  overflow-y: auto;
+  outline: 0;
 }
 
 .popup {
-  margin-top: auto;
-  margin-bottom: auto;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  width: auto;
+  min-width: calc(360px - 1rem);
+  padding-top: 20px;
+  padding-bottom: 20px;
 }

@@ -1,5 +1,5 @@
 <template>
-  <div class="popup-setting">
+  <div @mousedown.stop class="popup-setting">
     <div class="popup-setting__head">
       <div class="popup-setting__head-top">
         <div class="popup-setting__title">Настройки страницы</div>

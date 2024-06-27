@@ -31,6 +31,10 @@ body {
   &.scroll-off {
     overflow: hidden;
   }
+
+  &:has(.backdrop.show) {
+    overflow: hidden;
+  }
 }
 
 video {

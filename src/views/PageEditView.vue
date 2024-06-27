@@ -71,7 +71,6 @@ export default {
       return useProjectsStore().getProjectById(this.pages.projectId);
     },
     blocks() {
-      console.log(usePageBlocksStore().blocks)
       return usePageBlocksStore().blocks
     },
   },
