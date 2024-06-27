@@ -10,7 +10,7 @@
         </div>
 
         <div class="breadcrumbs__item-wrapper">
-          <RouterLink :to="`/project/${project.id}`" class="breadcrumbs__link">{{ project.title }}</RouterLink>
+          <RouterLink :to="`/project/${project.id}`" class="breadcrumbs__link">{{ project.title + ' ' + id }}</RouterLink>
         </div>
 
         <div class="breadcrumbs__item-wrapper">
@@ -20,7 +20,7 @@
 
       <div class="header-page__nav-right">
         <div class="header-page__link-wrapper">
-          <RouterLink :to="`/page/${page.id}/preview`" class="header-page__link">Предпросмотр</RouterLink>
+          <RouterLink :to="`/project/${project.id}/page/${page.id}/preview`" class="header-page__link">Предпросмотр</RouterLink>
         </div>
 
         <div class="header-page__link-wrapper">
@@ -82,6 +82,10 @@ export default {
     id: {
       type: String,
       required: true,
+    },
+    pageId: {
+      type: String,
+      required: true,
     }
   },
   components: {
@@ -100,10 +104,10 @@ export default {
   },
   computed: {
     page() {
-      return usePagesStore().getPageById(+this.id);
+      return usePagesStore().getPageById(+this.pageId);
     },
     project() {
-      return useProjectsStore().getProjectById(this.page.projectId);
+      return useProjectsStore().getProjectById(+this.id);
     },
   },
   mounted() {

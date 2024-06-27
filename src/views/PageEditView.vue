@@ -1,15 +1,14 @@
 <template>
-  <HeaderPage :id="id"/>
+  <HeaderPage :id="id" :pageId="pageId"/>
   <div>
     <div v-for="(block, index) in blocks" :key="index" :class="block.type">
-      <!-- Вывод содержимого блока в зависимости от типа -->
       <template v-if="block.type === 'text'">
-        <div class="block-text">
+        <div class="block-text edit">
           <p contenteditable @input="updateText($event, index)">{{ block.content }}</p>
         </div>
       </template>
       <template v-else-if="block.type === 'image'">
-        <div class="block-image">
+        <div class="block-image edit">
           <img :src="block.image" alt="Изображение">
           <p contenteditable @input="updateText($event, index)">{{ block.content }}</p>
         </div>
@@ -52,6 +51,10 @@ export default {
     id: {
       type: String,
       required: true,
+    },
+    pageId: {
+      type: String,
+      required: true,
     }
   },
   components: {
@@ -65,13 +68,13 @@ export default {
   },
   computed: {
     pages() {
-      return usePagesStore().getPageById(+this.id);
+      return usePagesStore().getPageById(+this.id)
     },
     project() {
-      return useProjectsStore().getProjectById(this.pages.projectId);
+      return useProjectsStore().getProjectById(this.pages.projectId)
     },
     blocks() {
-      return usePageBlocksStore().blocks
+      return usePageBlocksStore().getBlocksByPageId(+this.pageId)
     },
   },
 };

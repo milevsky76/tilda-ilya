@@ -16,9 +16,11 @@
   padding-left: 20px;
   padding-right: 20px;
 
-  &:hover,
-  &:focus {
-    background-color: transparentize($primary-200, .5);
+  &.edit {
+    &:hover,
+    &:focus {
+      background-color: transparentize($primary-200, .5);
+    }
   }
 }
 
@@ -36,9 +38,11 @@
   padding-left: 20px;
   padding-right: 20px;
 
-  &:hover,
-  &:focus {
-    background-color: transparentize($primary-200, .5);
+  &.edit {
+    &:hover,
+    &:focus {
+      background-color: transparentize($primary-200, .5);
+    }
   }
 
   img {

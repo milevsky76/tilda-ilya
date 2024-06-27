@@ -1,28 +1,28 @@
 <template>
   <div class="dropdown" ref="dropdownItem">
     <button
-      @click.stop.prevent="openPopup"
-      class="dropdown__more">
+      class="dropdown__more"
+      @click.stop.prevent="openPopup">
     </button>
     <div
       v-if="isOpen"
       class="dropdown__menu">
       <button
-        @click.stop.prevent="closePopup"
-        type="button">
-        Закрыть
+        type="button"
+        @click.stop.prevent="closePopup">
+          Закрыть
       </button>
 
       <button
-        @click.stop.prevent
-        type="button">
-        Переименовать
+        type="button"
+        @click.stop.prevent>
+          Переименовать
       </button>
 
       <button
-        @click.stop.prevent="this.$emit('remove')"
-        type="button">
-        Удалить
+        type="button"
+        @click.stop.prevent="this.$emit('remove')">
+          Удалить
       </button>
     </div>
   </div>
@@ -60,7 +60,8 @@ export default {
       }
     },
     handleClickOutside(event) {
-      if (this.$refs.dropdownItem && !this.$refs.dropdownItem.contains(event.target)) {
+      const refDropdownItem = this.$refs.dropdownItem
+      if (refDropdownItem && !refDropdownItem.contains(event.target)) {
         this.closePopup()
         // this.isOpenLocal = false;
         // document.removeEventListener('click', this.handleClickOutside);

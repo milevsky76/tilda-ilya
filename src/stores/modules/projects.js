@@ -7,23 +7,19 @@ export const useProjectsStore = defineStore({
   state: () => ({
     projects: [{
         id: 0,
-        title: 'My project',
-        pages: []
+        title: 'My project1'
       },
       {
         id: 1,
-        title: 'My project',
-        pages: []
+        title: 'My project2'
       },
       {
         id: 2,
-        title: 'My project',
-        pages: []
+        title: 'My project3'
       },
       {
         id: 3,
-        title: 'My project',
-        pages: []
+        title: 'My project4'
       }
 
     ],

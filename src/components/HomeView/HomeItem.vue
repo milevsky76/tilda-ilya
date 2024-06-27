@@ -5,7 +5,7 @@
       class="project-item__wrapper">
       <div class="project-item__header">
         <div class="project-item__title">
-          {{ project.title + ' ' + project.id }}
+          {{ project.title }}
         </div>
 
         <DropdownPopup @remove="removeProject(project.id)" />

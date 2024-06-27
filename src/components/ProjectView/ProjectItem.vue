@@ -3,7 +3,7 @@
     <div class="pages-list__wrapper">
       <div class="pages-list__right">
         <RouterLink
-          :to="`/page/${page.id}/edit`"
+          :to="`/project/${page.projectId}/page/${page.id}/edit`"
           class="pages-list__image-block">
           <div class="pages-list__image">
             <img :src="page.image" alt="">
@@ -12,11 +12,8 @@
 
         <div class="pages-list__name-block">
           <RouterLink
-            :to="`/page/${page.id}/edit`"
+            :to="`/project/${page.projectId}/page/${page.id}/edit`"
             class="pages-list__name-text">
-            <!-- <span class="pages-list__home-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 32" width="14px"><path d="M27 11L14-.06 1 11v21.06h26V11zm-8 21H9V20.91h10z"></path></svg>
-            </span> -->
             <span class="pages-list__page-name">{{ page.title }}</span>
           </RouterLink>
 
@@ -45,7 +42,7 @@
               @save="savePage"/>
         </Popup>
 
-        <ProjectItemDel @remove="removePage(page.id)" />
+        <ProjectItemRemove @remove="removePage(page.id)" />
       </div>
     </div>
   </li>
@@ -54,7 +51,7 @@
 <script>
 import { usePagesStore } from '@/stores/modules/pages';
 
-import ProjectItemDel from '@/components/ProjectView/ProjectItemDel.vue'
+import ProjectItemRemove from '@/components/ProjectView/ProjectItemRemove.vue'
 
 import Popup from '@/components/Generic/Popup.vue'
 import PopupSetting from '@/components/Generic/PopupSetting.vue'
@@ -72,7 +69,7 @@ export default {
     }
   },
   components: {
-    ProjectItemDel, Popup, PopupSetting
+    ProjectItemRemove, Popup, PopupSetting
   },
   methods: {
     removePage(id) {

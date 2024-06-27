@@ -33,7 +33,7 @@
         </div>
 
         <div class="project-view__panel-bottom">
-          <div class="project-view__project-name">{{ project.title + ' ' + id }}</div>
+          <div class="project-view__project-name">{{ project.title }}</div>
 
           <ProjectItemAdd @add="addPage(+id)"/>
         </div>

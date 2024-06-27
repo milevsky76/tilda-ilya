@@ -10,11 +10,10 @@
 
     <nav class="header__nav">
       <div class="header__nav-left">
-        <a href="javascript:void(0);" class="header__nav-link header__nav-link--active">Мои сайты</a>
+        <RouterLink :to="'/'" class="header__nav-link header__nav-link--active">Мои сайты</RouterLink>
       </div>
 
       <div class="header__nav-right">
-        <a href="javascript:void(0);" class="header__nav-link header__nav-link--name">(Илья)</a>
         <a href="javascript:void(0);" class="header__nav-link">Выйти</a>
       </div>
     </nav>

@@ -34,7 +34,7 @@ const router = createRouter({
       props: true
     },
     {
-      path: '/page/:id/edit',
+      path: '/project/:id/page/:pageId/edit',
       name: 'PageEditView',
       component: PageEditView,
       props: true,
@@ -43,7 +43,7 @@ const router = createRouter({
       }
     },
     {
-      path: '/page/:id/preview',
+      path: '/project/:id/page/:pageId/preview',
       name: 'PagePreviewView',
       component: PagePreviewView,
       props: true

@@ -5,7 +5,6 @@ import {
 export const usePageBlocksStore = defineStore({
   id: 'pageBlocks',
   state: () => ({
-    blocks: [],
     blocksTypes: [{
         type: 'text',
         title: 'Текстовые блоки'
@@ -15,8 +14,23 @@ export const usePageBlocksStore = defineStore({
         title: 'Обложки'
       }
     ],
+    blocks: [{
+      pageId: 0,
+      id: 0,
+      type: 'text',
+      content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, officiis?'
+    }],
+    nextId: 1,
     activeBlockIndex: -1,
   }),
+  getters: {
+    getBlocksByPageId: (state) => (pageId) => {
+      return state.blocks.filter(block => block.pageId === pageId)
+    },
+    getBlockById: (state) => (id) => {
+      return state.blocks.find(block => block.id === id)
+    },
+  },
   actions: {
     addTextBlock(textBlock) {
       this.blocks.push({
