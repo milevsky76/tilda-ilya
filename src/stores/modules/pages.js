@@ -27,6 +27,9 @@ export const usePagesStore = defineStore({
     getPagesByProjectId: (state) => (projectId) => {
       return state.pages.filter(page => page.projectId === projectId)
     },
+    getPageById: (state) => (id) => {
+      return state.pages.find(page => page.id === id)
+    },
   },
   actions: {
     addPage(projectId) {
@@ -44,5 +47,13 @@ export const usePagesStore = defineStore({
     removePage(id) {
       this.pages = this.pages.filter(page => page.id !== id);
     },
+    savePage(editPage) {
+      const pageId = editPage.id;
+      const index = this.pages.findIndex(page => page.id === pageId);
+
+      if (index !== -1) {
+        this.pages[index] = editPage;
+      }
+    }
   },
 });

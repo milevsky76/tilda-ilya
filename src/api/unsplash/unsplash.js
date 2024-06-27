@@ -1,4 +1,4 @@
-const accessKey = '';
+const accessKey = 'dvc0YUx2wwx58h_5N0s7l6mLVXWOSAz9c286YragYqI';
 
 export async function fetchImages(query) {
   try {

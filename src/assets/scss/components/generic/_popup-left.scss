@@ -1,0 +1,50 @@
+.overlay {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  overflow-y: auto;
+  overflow-x: hidden;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 1s;
+  width: 100%;
+  opacity: 0.8;
+}
+
+.popup-left {
+  display: flex;
+  height: 100%;
+  width: 50vw;
+  top: 0;
+  // left: -50vw;
+  // background-color: #111;
+  position: fixed;
+  z-index: 3;
+  overflow: hidden;
+  // transition: .5s;
+  // padding-top: 60px;
+  transition: transform $transition-default;
+
+  background-color: brown;
+}
+
+.cl1 {
+  width: 100%;
+  max-width: 50%;
+  background-color: black;
+}
+.cl2 {
+  width: 100%;
+  max-width: 50%;
+  background-color: burlywood;
+}
+
+body:has(.popup-left.show) {
+  margin-left: 50vw;
+  // transform: translateX(50vw);
+  overflow-x: hidden;
+}

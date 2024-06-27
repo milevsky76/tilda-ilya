@@ -7,6 +7,7 @@
 @import "generic/helpers";
 
 @import "components/header-app";
+@import "components/header-page";
 
 @import "components/home-view/home-view";
 @import "components/home-view/home-list";
@@ -16,9 +17,12 @@
 @import "components/generic/popup";
 @import "components/generic/dropdown-popup";
 @import "components/generic/popup-setting";
+@import "components/generic/popup-left";
 
 @import "components/project-view/project-view";
 @import "components/project-view/project-list";
 @import "components/project-view/project-item";
 @import "components/project-view/project-item-del";
 @import "components/project-view/project-item-add";
+
+@import "components/page-edit-view/page-edit-view";

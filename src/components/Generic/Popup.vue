@@ -1,7 +1,6 @@
 <template>
-  <div v-if="isOpen" class="backdrop" @click="close">
-    <div class="popup" @click.stop>
-      <!-- <button @click="close" type="button">Закрыть</button> -->
+  <div v-if="isOpen" class="backdrop" @mousedown="close">
+    <div class="popup" @mousedown.stop>
       <slot></slot>
     </div>
   </div>
@@ -20,7 +19,7 @@ export default {
     close: null
   },
   methods: {
-    close() {
+    close(event) {
       this.$emit('close')
     }
   }

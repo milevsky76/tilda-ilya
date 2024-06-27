@@ -29,14 +29,14 @@
 .popup-setting__close {
   width: 19px;
   height: 19px;
-  background-image: url('@/assets/x.svg');
+  background-image: url('@/assets/icons/x.svg');
   background-repeat: no-repeat;
   cursor: pointer;
   transition: background-image $transition-default;
 
   &:hover,
   &:focus {
-    background-image: url('@/assets/x-hover.svg');
+    background-image: url('@/assets/icons/x-hover.svg');
   }
 }
 
@@ -114,6 +114,7 @@
 }
 
 .popup-setting__error-message {
+  display: none;
   text-align: right;
   color: red;
   opacity: .5;

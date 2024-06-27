@@ -17,7 +17,7 @@
             <!-- <span class="pages-list__home-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 32" width="14px"><path d="M27 11L14-.06 1 11v21.06h26V11zm-8 21H9V20.91h10z"></path></svg>
             </span> -->
-            <span class="pages-list__page-name">{{ page.title + ' ' + page.id }}</span>
+            <span class="pages-list__page-name">{{ page.title }}</span>
           </RouterLink>
 
           <div class="pages-list__info">
@@ -41,7 +41,8 @@
           @close="isPopupOpen = false">
             <PopupSetting
               :page="page"
-              @closePopup="isPopupOpen = false"/>
+              @closePopup="isPopupOpen = false"
+              @save="savePage"/>
         </Popup>
 
         <ProjectItemDel @remove="removePage(page.id)" />
@@ -77,6 +78,10 @@ export default {
     removePage(id) {
       usePagesStore().removePage(id);
     },
+    savePage(updatedPage) {
+      usePagesStore().savePage(updatedPage)
+      this.isPopupOpen = false
+    }
   },
 }
 </script>
