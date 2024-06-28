@@ -62,46 +62,30 @@ export const usePageBlocksStore = defineStore({
     saveState() {
       localStorage.setItem('blocksState', JSON.stringify(this.$state));
     },
-    addTextBlock(textBlock, beforeBlockId = undefined) {
-      console.log(beforeBlockId);
-      const indexState = getIndex(this, textBlock.pageId);
+    addBlock(block, beforeBlockId = undefined) {
+      const indexState = getIndex(this, block.pageId);
 
       if (beforeBlockId === undefined) {
         this.blocks.push({
-          type: 'text',
-          ...textBlock,
+          ...block,
           id: this.nextId++,
           index: indexState.nextIndex++
         });
       } else {
-        const beforeBlock = getBlock(this.blocks, textBlock.pageId, beforeBlockId);
-        const allPageBlocks = this.getBlocksByPageId(textBlock.pageId);
+        const beforeBlock = getBlock(this.blocks, block.pageId, beforeBlockId);
+        const allPageBlocks = this.getBlocksByPageId(block.pageId);
         allPageBlocks.forEach((block) => {
           if (block.index > beforeBlock.index) {
-            console.log('fff: ', block.content);
             block.index++;
           }
         });
         this.blocks.push({
-          type: 'text',
-          ...textBlock,
+          ...block,
           id: this.nextId++,
           index: beforeBlock.index + 1
         });
         indexState.nextIndex++;
       }
-
-      this.saveState();
-    },
-    addImageBlock(imageBlock) {
-      const indexState = getIndex(this, imageBlock.pageId);
-
-      this.blocks.push({
-        type: 'image',
-        ...imageBlock,
-        id: this.nextId++,
-        index: indexState.nextIndex++
-      });
 
       this.saveState();
     },
