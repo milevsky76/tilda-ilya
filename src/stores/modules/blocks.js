@@ -1,3 +1,4 @@
+import { HmacSHA1 } from 'crypto-js';
 import { defineStore } from 'pinia';
 
 const defaultState = {
@@ -26,7 +27,8 @@ const defaultState = {
       nextIndex: 1
     }
   },
-  nextId: 1
+  nextId: 1,
+  blocksHistory: []
 };
 
 export const usePageBlocksStore = defineStore({
@@ -56,11 +58,31 @@ export const usePageBlocksStore = defineStore({
     },
     getBlockById: (state) => (id) => {
       return state.blocks.find((block) => block.id === id);
+    },
+    hasHistory() {
+      return this.blocksHistory.length > 1;
     }
   },
   actions: {
     saveState() {
+      console.log('f');
+      this.blocksHistory.push(JSON.stringify(this.$state.blocks));
       localStorage.setItem('blocksState', JSON.stringify(this.$state));
+    },
+    rollBack() {
+      const history = this.blocksHistory;
+      if (history.length === 0) {
+        return;
+      }
+      // history.splice(history.length - 1, 1);
+      history.pop();
+      this.blocks = JSON.parse(history[history.length - 1]);
+
+      localStorage.setItem('blocksState', JSON.stringify(this.$state));
+    },
+    initHistory() {
+      this.blocksHistory = [];
+      this.blocksHistory.push(JSON.stringify(this.blocks));
     },
     addBlock(block, beforeBlockId = undefined) {
       const indexState = getIndex(this, block.pageId);

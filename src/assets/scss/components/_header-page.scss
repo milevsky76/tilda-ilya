@@ -69,6 +69,17 @@
   letter-spacing: 1px;
 }
 
+button.header-page__link {
+  border: none;
+  background-color: transparent;
+
+  transition: color $transition-default;
+
+  &:hover {
+    color: $accent-400;
+  }
+}
+
 .breadcrumbs__link--toggle {
   position: relative;
   background-color: transparent;
@@ -119,11 +130,13 @@
   border: none;
   background-color: inherit;
   cursor: pointer;
-  transition: background-color $transition-default, background-color $transition-default;
+  transition:
+    background-color $transition-default,
+    background-color $transition-default;
 
   &:hover,
   &:focus {
     background-color: #d9d9d9;
-    color: #333333
+    color: #333333;
   }
 }

@@ -1,9 +1,9 @@
 <template>
   <div>
-    <div v-for="(block, index) in blocks" :key="block.id" :class="block.type" class="page-block">
+    <div v-for="(block, index) in blocks" :key="index" :class="block.type" class="page-block">
       <template v-if="block.type === 'text'">
         <div class="block-text edit">
-          <p contenteditable @input="updateText($event, block.pageId, index)">
+          <p contenteditable @blur="updateText($event, block.pageId, index)">
             {{ block.content }}
           </p>
         </div>
@@ -12,7 +12,7 @@
       <template v-else-if="block.type === 'image'">
         <div class="block-image edit">
           <img :src="block.image" alt="Изображение" />
-          <p contenteditable @input="updateText($event, block.pageId, index)">
+          <p contenteditable @blur="updateText($event, block.pageId, index)">
             {{ block.content }}
           </p>
         </div>
@@ -194,7 +194,7 @@ export default {
     HeaderPage
   },
   methods: {
-    ...mapActions(usePageBlocksStore, ['moveUp', 'moveDown', 'remove', 'duplicate']),
+    ...mapActions(usePageBlocksStore, ['moveUp', 'moveDown', 'remove', 'duplicate', 'initHistory']),
     ...mapActions(useModalStore, ['setBlockId', 'open', 'setSelectedImageSrc']),
     updateText(event, pageId, index) {
       const newText = event.target.textContent.trim();
@@ -242,6 +242,9 @@ export default {
       const blocks = usePageBlocksStore().getBlocksByPageId(+this.pageId);
       return JSON.parse(JSON.stringify(blocks.sort((a, b) => a.index - b.index)));
     }
+  },
+  mounted() {
+    this.initHistory();
   }
 };
 </script>
