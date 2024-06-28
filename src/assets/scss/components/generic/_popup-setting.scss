@@ -107,6 +107,13 @@
   letter-spacing: 1px;
 }
 
+.popup-setting__current-image-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 200px);
+  justify-content: center;
+  grid-auto-rows: 133px;
+}
+
 .popup-setting__current-image {
   width: 200px;
   height: 133px;
@@ -152,7 +159,8 @@ input.popup-setting__input {
 
 .popup-setting__images {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(auto-fill, 200px);
+  justify-content: center;
   grid-auto-rows: 133px;
   gap: 20px;
 }
@@ -169,7 +177,12 @@ input.popup-setting__input {
 .popup-setting__bottoms {
   display: flex;
   justify-content: end;
-  gap: 5px;
+  gap: 15px;
+
+  @include breakpoint-down(mobile-small) {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 .popup-setting__btn-white,

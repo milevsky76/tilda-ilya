@@ -1,7 +1,7 @@
 <template>
   <li class="pages-list__item">
     <div class="pages-list__wrapper">
-      <div class="pages-list__right">
+      <div class="pages-list__left">
         <RouterLink
           :to="`/project/${page.projectId}/page/${page.id}/edit`"
           class="pages-list__image-block">

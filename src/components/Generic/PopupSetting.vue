@@ -78,11 +78,14 @@
         </div>
 
         <div v-show="activeTab === 'badge'">
-          <img
+          <div 
             v-show="editedPage.image"
-            :src="editedPage.image"
-            class="popup-setting__current-image"
-            alt="">
+            class="popup-setting__current-image-wrapper">
+            <img
+              :src="editedPage.image"
+              class="popup-setting__current-image"
+              alt="">
+          </div>
           <div
             v-if="images.length === 0 && isSearch"
             class="popup-setting__error-message">
@@ -91,7 +94,6 @@
           <input
             v-model="searchQuery"
             class="popup-setting__input"
-            id=""
             type="text"
             name="descr"
             value=""

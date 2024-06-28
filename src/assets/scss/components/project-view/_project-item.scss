@@ -7,8 +7,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 20px;
 }
 
+.pages-list__left,
 .pages-list__right {
   display: flex;
   align-items: center;
@@ -16,6 +18,7 @@
 }
 
 .pages-list__image-block {
+  flex-shrink: 0;
   display: block;
   width: 70px;
   height: 70px;
@@ -33,9 +36,9 @@
   width: 100%;
   height: 100%;
   background-color: #f0f0f0;
-  ;
 
   img {
+    width: 100%;
     height: 100%;
     object-fit: cover;
   }
