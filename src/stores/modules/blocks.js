@@ -95,6 +95,12 @@ export const usePageBlocksStore = defineStore({
 
       this.saveState();
     },
+    update(id, newData) {
+      const index = this.blocks.findIndex((block) => block.id === id);
+      this.blocks[index] = cloneObject(newData);
+
+      this.saveState();
+    },
     moveUp(pageId, index) {
       if (index === 0) {
         return;

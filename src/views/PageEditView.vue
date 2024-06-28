@@ -133,6 +133,13 @@
           </svg>
         </button>
       </div>
+
+      <button
+        class="button button--filled button--rounded page-block__edit-content-button"
+        @click="openEditBlockModal(block.type, block.id, block.image)"
+      >
+        Контент
+      </button>
     </div>
   </div>
 
@@ -161,6 +168,9 @@ import { mapActions } from 'pinia';
 import HeaderPage from '@/components/HeaderPage.vue';
 
 import PopupLeft from '@/components/Generic/PopupLeft.vue';
+import { useModalStore } from '@/stores/modules/modal';
+import TextBlockSettingsModalContent from '@/components/Modals/Content/TextBlockSettingsModalContent.vue';
+import ImageTextBlockSettingsModalContent from '@/components/Modals/Content/ImageTextBlockSettingsModalContent.vue';
 
 export default {
   data() {
@@ -185,6 +195,7 @@ export default {
   },
   methods: {
     ...mapActions(usePageBlocksStore, ['moveUp', 'moveDown', 'remove', 'duplicate']),
+    ...mapActions(useModalStore, ['setBlockId', 'open', 'setSelectedImageSrc']),
     updateText(event, pageId, index) {
       const newText = event.target.textContent.trim();
       usePageBlocksStore().updateTextBlock(pageId, index, newText);
@@ -204,6 +215,20 @@ export default {
     },
     moveBlockDown(pageId, index) {
       this.moveDown(pageId, index);
+    },
+    openEditBlockModal(type, id, src) {
+      this.setBlockId(id);
+      let modalContent = null;
+      switch (type) {
+        case 'text':
+          modalContent = TextBlockSettingsModalContent;
+          break;
+        case 'image':
+          this.setSelectedImageSrc(src);
+          modalContent = ImageTextBlockSettingsModalContent;
+          break;
+      }
+      this.open(modalContent);
     }
   },
   computed: {

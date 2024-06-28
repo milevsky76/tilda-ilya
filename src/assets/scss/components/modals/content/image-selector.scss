@@ -1,0 +1,50 @@
+.image-selector__badge-search {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .text-field {
+    width: 80%;
+  }
+}
+
+.image-selector__images {
+  margin-top: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  height: 200px;
+  max-height: 200px;
+
+  overflow: auto;
+
+  img {
+    cursor: pointer;
+
+    width: 200px;
+    height: 150px;
+
+    object-fit: cover;
+  }
+}
+
+.image-selector__image--active {
+  box-shadow: 0 0 0 2px $black;
+}
+
+.image-selector__remove-image-button {
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.image-selector__images-empty-text {
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+  text-align: center;
+}

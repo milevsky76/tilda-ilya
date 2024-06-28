@@ -56,12 +56,14 @@
 
   &:hover {
     .page-block__add-block-button,
-    .page-block__block-actions {
+    .page-block__block-actions,
+    .page-block__edit-content-button {
       opacity: 0.5;
     }
   }
 }
 
+.page-block__edit-content-button,
 .page-block__add-block-button {
   position: absolute;
   z-index: 10;
@@ -86,6 +88,11 @@
   svg {
     fill: $white;
   }
+}
+
+.page-block__edit-content-button {
+  top: 10px;
+  left: 10px;
 }
 
 .page-block__add-block-button {
@@ -140,5 +147,27 @@
 
       transition: color $transition-default;
     }
+  }
+}
+
+.page-block__editable-text {
+  padding: 40px;
+
+  max-width: 100%;
+
+  outline: none;
+
+  font-size: 30px;
+  text-align: center;
+}
+
+.block-image {
+  height: 100dvh;
+
+  img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
   }
 }

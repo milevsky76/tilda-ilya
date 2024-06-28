@@ -2,18 +2,23 @@
   <component
     v-if="headerType && headerType.component !== null"
     :is="headerType.component"
-    :="headerType.props" />
+    :="headerType.props"
+  />
   <RouterView />
+  <BaseModal />
 </template>
 
 <script>
-import HeaderApp from '@/components/HeaderApp.vue'
-import HeaderPage from '@/components/HeaderPage.vue'
+import HeaderApp from '@/components/HeaderApp.vue';
+import HeaderPage from '@/components/HeaderPage.vue';
+import BaseModal from './components/Modals/BaseModal.vue';
 
 export default {
   name: 'App',
   components: {
-    HeaderApp, HeaderPage
+    HeaderApp,
+    HeaderPage,
+    BaseModal
   },
   computed: {
     headerType() {
@@ -32,5 +37,5 @@ export default {
       }
     }
   }
-}
+};
 </script>
