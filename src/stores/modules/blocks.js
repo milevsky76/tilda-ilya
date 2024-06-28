@@ -66,10 +66,14 @@ export const usePageBlocksStore = defineStore({
 
       this.saveState();
     },
-    updateTextBlock(index, newText) {
-      this.blocks[index].content = newText;
+    updateTextBlock(id, newText) {
+      const index = this.blocks.findIndex(block => block.id === id);
 
-      this.saveState();
+      if (index !== -1) {
+        this.blocks[index].content = newText;
+
+        this.saveState();
+      }
     }
   }
 });

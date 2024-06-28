@@ -8,7 +8,7 @@
         <div class="block-text edit">
           <p
             contenteditable
-            @input="updateText($event, index)">
+            @input="updateText($event, block.id)">
               {{ block.content }}
           </p>
         </div>
@@ -21,7 +21,7 @@
             alt="Изображение">
           <p
             contenteditable
-            @input="updateText($event, index)">
+            @input="updateText($event, block.id)">
               {{ block.content }}
           </p>
         </div>
@@ -75,9 +75,9 @@ export default {
     PopupLeft, HeaderPage
   },
   methods: {
-    updateText(event, index) {
+    updateText(event, id) {
       const newText = event.target.textContent.trim()
-      usePageBlocksStore().updateTextBlock(index, newText)
+      usePageBlocksStore().updateTextBlock(id, newText)
     }
   },
   computed: {
