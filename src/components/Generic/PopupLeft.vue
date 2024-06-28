@@ -81,6 +81,10 @@
             <h2>Блок с видео youtube</h2>
             <div>Lorem ipsum dolor, sit amet consectetur adipisicing.</div>
           </button>
+          <button @click="addVimeoBlock">
+            <h2>Блок с видео vimeo</h2>
+            <div>Lorem ipsum dolor, sit amet consectetur adipisicing.</div>
+          </button>
         </div>
       </div>
     </div>
@@ -143,6 +147,15 @@ export default {
         type: 'youtube',
         pageId: +this.pageId,
         videoId: 'kyBqq_Ibdvg'
+      };
+
+      usePageBlocksStore().addBlock(youtubeBlock, this.beforeBlockIndex);
+    },
+    addVimeoBlock() {
+      const youtubeBlock = {
+        type: 'vimeo',
+        pageId: +this.pageId,
+        videoId: '970764783'
       };
 
       usePageBlocksStore().addBlock(youtubeBlock, this.beforeBlockIndex);

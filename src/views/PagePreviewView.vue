@@ -15,8 +15,14 @@
       </template>
 
       <template v-else-if="block.type === 'youtube'">
-        <div class="block-youtube">
+        <div class="block-video">
           <YouTube :src="block.videoId" />
+        </div>
+      </template>
+
+      <template v-else-if="block.type === 'vimeo'">
+        <div class="block-video">
+          <vueVimeoPlayer :video-id="block.videoId" />
         </div>
       </template>
     </div>
@@ -25,13 +31,15 @@
 
 <script>
 import YouTube from 'vue3-youtube';
+import { vueVimeoPlayer } from 'vue-vimeo-player';
 import { useProjectsStore } from '@/stores/modules/projects';
 import { usePagesStore } from '@/stores/modules/pages';
 import { usePageBlocksStore } from '@/stores/modules/blocks';
 
 export default {
   components: {
-    YouTube
+    YouTube,
+    vueVimeoPlayer
   },
   data() {
     return {

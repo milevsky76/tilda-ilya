@@ -19,8 +19,14 @@
       </template>
 
       <template v-else-if="block.type === 'youtube'">
-        <div class="block-youtube edit">
+        <div class="block-video edit">
           <YouTube :src="block.videoId" />
+        </div>
+      </template>
+
+      <template v-else-if="block.type === 'vimeo'">
+        <div class="block-video edit">
+          <vueVimeoPlayer :video-id="block.videoId" />
         </div>
       </template>
 
@@ -179,6 +185,7 @@ import TextBlockSettingsModalContent from '@/components/Modals/Content/TextBlock
 import ImageTextBlockSettingsModalContent from '@/components/Modals/Content/ImageTextBlockSettingsModalContent.vue';
 import YouTube from 'vue3-youtube';
 import YoutubeBlockSettingsModalContent from '@/components/Modals/Content/YoutubeBlockSettingsModalContent.vue';
+import { vueVimeoPlayer } from 'vue-vimeo-player';
 
 export default {
   data() {
@@ -200,7 +207,8 @@ export default {
   components: {
     PopupLeft,
     HeaderPage,
-    YouTube
+    YouTube,
+    vueVimeoPlayer
   },
   methods: {
     ...mapActions(usePageBlocksStore, ['moveUp', 'moveDown', 'remove', 'duplicate', 'initHistory']),
@@ -237,6 +245,7 @@ export default {
           modalContent = ImageTextBlockSettingsModalContent;
           break;
         case 'youtube':
+        case 'vimeo':
           modalContent = YoutubeBlockSettingsModalContent;
           break;
       }
