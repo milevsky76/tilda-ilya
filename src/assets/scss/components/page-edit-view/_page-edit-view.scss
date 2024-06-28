@@ -55,7 +55,8 @@
   position: relative;
 
   &:hover {
-    .page-block__add-block-button {
+    .page-block__add-block-button,
+    .page-block__block-actions {
       opacity: 0.5;
     }
   }
@@ -99,4 +100,45 @@
   height: $size;
 
   border-radius: 50%;
+}
+
+.page-block__block-actions {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 10;
+
+  display: flex;
+  align-items: center;
+
+  background-color: $black;
+  opacity: 0;
+
+  button {
+    padding: 10px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: none;
+    background-color: $black;
+
+    &:hover {
+      svg {
+        color: $accent-400;
+      }
+    }
+
+    svg {
+      $size: 20px;
+
+      width: $size;
+      height: $size;
+
+      color: $white;
+
+      transition: color $transition-default;
+    }
+  }
 }

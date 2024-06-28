@@ -86,7 +86,7 @@ export const usePageBlocksStore = defineStore({
           id: this.nextId++,
           index: beforeBlock.index + 1
         });
-        indexState.newText++;
+        indexState.nextIndex++;
       }
 
       this.saveState();
@@ -108,6 +108,58 @@ export const usePageBlocksStore = defineStore({
       currentBlock.content = newText;
 
       this.saveState();
+    },
+    moveUp(pageId, index) {
+      if (index === 0) {
+        return;
+      }
+
+      const prevBlock = getBlock(this.blocks, pageId, index - 1);
+      const currentBlock = getBlock(this.blocks, pageId, index);
+
+      prevBlock.index = index;
+      currentBlock.index = index - 1;
+
+      this.saveState();
+    },
+    moveDown(pageId, index) {
+      const lastIndex = this.blocksIndexes[pageId].nextIndex - 1;
+      if (index === lastIndex) {
+        return;
+      }
+
+      const nextBlock = getBlock(this.blocks, pageId, index + 1);
+      const currentBlock = getBlock(this.blocks, pageId, index);
+
+      nextBlock.index = index;
+      currentBlock.index = index + 1;
+
+      this.saveState();
+    },
+    remove(pageId, id) {
+      const index = getBlockIndex(this.blocks, pageId, id);
+      this.blocks.splice(index, 1);
+
+      this.saveState();
+    },
+    duplicate(pageId, index) {
+      const duplicatedBlock = getBlock(this.blocks, pageId, index);
+      const indexState = getIndex(this, duplicatedBlock);
+      const allPageBlocks = this.getBlocksByPageId(duplicatedBlock.pageId);
+
+      allPageBlocks.forEach((block) => {
+        if (block.index > duplicatedBlock.index) {
+          block.index++;
+        }
+      });
+      this.blocks.push({
+        ...cloneObject(duplicatedBlock),
+        id: this.nextId++,
+        index: duplicatedBlock.index + 1
+      });
+      indexState.nextIndex++;
+
+      this.saveState();
     }
   }
 });
@@ -119,6 +171,10 @@ function getIndex(state, block) {
 
 function getBlock(allBlocks, pageId, index) {
   return allBlocks.find((block) => block.pageId === pageId && block.index === index);
+}
+
+function getBlockIndex(allBlocks, pageId, blockId) {
+  return allBlocks.findIndex((block) => block.pageId === pageId && block.id === blockId);
 }
 
 function cloneObject(obj) {
