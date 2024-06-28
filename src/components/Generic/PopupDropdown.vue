@@ -2,7 +2,7 @@
   <div class="dropdown" ref="dropdownItem">
     <button
       class="dropdown__more"
-      @click.stop.prevent="openPopup">
+      @click.prevent="openPopup">
     </button>
     <div
       v-if="isOpen"
@@ -40,7 +40,7 @@ export default {
     index: Number
   },
   methods: {
-    openPopup(event) {
+    openPopup() {
       this.isOpen = true
 
       document.addEventListener('click', this.handleClickOutside)
@@ -64,9 +64,6 @@ export default {
       
       if (refDropdownItem && !refDropdownItem?.contains(event.target)) {
         this.closePopup()
-        // this.isOpenLocal = false;
-        // document.removeEventListener('click', this.handleClickOutside);
-        // this.$emit('toggle');
       }
     },
     renameItem() {}
