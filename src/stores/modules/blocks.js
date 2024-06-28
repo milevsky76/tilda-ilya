@@ -63,7 +63,7 @@ export const usePageBlocksStore = defineStore({
       localStorage.setItem('blocksState', JSON.stringify(this.$state));
     },
     addTextBlock(textBlock, beforeBlockId = undefined) {
-      const indexState = getIndex(this, textBlock);
+      const indexState = getIndex(this, textBlock.pageId);
 
       if (beforeBlockId === undefined) {
         this.blocks.push({
@@ -77,6 +77,7 @@ export const usePageBlocksStore = defineStore({
         const allPageBlocks = this.getBlocksByPageId(textBlock.pageId);
         allPageBlocks.forEach((block) => {
           if (block.index > beforeBlock.index) {
+            console.log('fff: ', block.content);
             block.index++;
           }
         });
@@ -92,7 +93,7 @@ export const usePageBlocksStore = defineStore({
       this.saveState();
     },
     addImageBlock(imageBlock) {
-      const indexState = getIndex(this, imageBlock);
+      const indexState = getIndex(this, imageBlock.pageId);
 
       this.blocks.push({
         type: 'image',
@@ -138,13 +139,24 @@ export const usePageBlocksStore = defineStore({
     },
     remove(pageId, id) {
       const index = getBlockIndex(this.blocks, pageId, id);
+      const indexInPage = this.blocks[index].index;
+      const indexState = getIndex(this, pageId);
+      const allPageBlocks = this.getBlocksByPageId(pageId);
+
       this.blocks.splice(index, 1);
+
+      allPageBlocks.forEach((block) => {
+        if (block.index > indexInPage) {
+          block.index--;
+        }
+      });
+      indexState.nextIndex--;
 
       this.saveState();
     },
     duplicate(pageId, index) {
       const duplicatedBlock = getBlock(this.blocks, pageId, index);
-      const indexState = getIndex(this, duplicatedBlock);
+      const indexState = getIndex(this, duplicatedBlock.pageId);
       const allPageBlocks = this.getBlocksByPageId(duplicatedBlock.pageId);
 
       allPageBlocks.forEach((block) => {
@@ -164,8 +176,7 @@ export const usePageBlocksStore = defineStore({
   }
 });
 
-function getIndex(state, block) {
-  const pageId = block.pageId;
+function getIndex(state, pageId) {
   return state.blocksIndexes[pageId];
 }
 
