@@ -18,6 +18,12 @@
         </div>
       </template>
 
+      <template v-else-if="block.type === 'youtube'">
+        <div class="block-youtube edit">
+          <YouTube :src="block.videoId" />
+        </div>
+      </template>
+
       <button class="page-block__add-block-button" @click="openPopup(block.index)">
         <svg
           width="30"
@@ -171,6 +177,8 @@ import PopupLeft from '@/components/Generic/PopupLeft.vue';
 import { useModalStore } from '@/stores/modules/modal';
 import TextBlockSettingsModalContent from '@/components/Modals/Content/TextBlockSettingsModalContent.vue';
 import ImageTextBlockSettingsModalContent from '@/components/Modals/Content/ImageTextBlockSettingsModalContent.vue';
+import YouTube from 'vue3-youtube';
+import YoutubeBlockSettingsModalContent from '@/components/Modals/Content/YoutubeBlockSettingsModalContent.vue';
 
 export default {
   data() {
@@ -191,7 +199,8 @@ export default {
   },
   components: {
     PopupLeft,
-    HeaderPage
+    HeaderPage,
+    YouTube
   },
   methods: {
     ...mapActions(usePageBlocksStore, ['moveUp', 'moveDown', 'remove', 'duplicate', 'initHistory']),
@@ -226,6 +235,9 @@ export default {
         case 'image':
           this.setSelectedImageSrc(src);
           modalContent = ImageTextBlockSettingsModalContent;
+          break;
+        case 'youtube':
+          modalContent = YoutubeBlockSettingsModalContent;
           break;
       }
       this.open(modalContent);

@@ -76,6 +76,12 @@
             <div>Lorem ipsum dolor, sit amet consectetur adipisicing.</div>
           </button>
         </div>
+        <div v-if="activeTab === 'video'" class="popup-left__blocks-image">
+          <button @click="addYoutubeBlock">
+            <h2>Блок с видео youtube</h2>
+            <div>Lorem ipsum dolor, sit amet consectetur adipisicing.</div>
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -131,6 +137,15 @@ export default {
       };
 
       usePageBlocksStore().addBlock(imageBlock, this.beforeBlockIndex);
+    },
+    addYoutubeBlock() {
+      const youtubeBlock = {
+        type: 'youtube',
+        pageId: +this.pageId,
+        videoId: 'kyBqq_Ibdvg'
+      };
+
+      usePageBlocksStore().addBlock(youtubeBlock, this.beforeBlockIndex);
     }
   },
   computed: {

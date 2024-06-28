@@ -10,6 +10,10 @@ const defaultState = {
     {
       type: 'cover',
       title: 'Обложки'
+    },
+    {
+      type: 'video',
+      title: 'Видео'
     }
   ],
   blocks: [
@@ -65,7 +69,6 @@ export const usePageBlocksStore = defineStore({
   },
   actions: {
     saveState() {
-      console.log('f');
       this.blocksHistory.push(JSON.stringify(this.$state.blocks));
       localStorage.setItem('blocksState', JSON.stringify(this.$state));
     },
@@ -74,7 +77,6 @@ export const usePageBlocksStore = defineStore({
       if (history.length === 0) {
         return;
       }
-      // history.splice(history.length - 1, 1);
       history.pop();
       this.blocks = JSON.parse(history[history.length - 1]);
 
