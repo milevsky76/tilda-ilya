@@ -87,6 +87,10 @@ export default {
     pageId: {
       type: String,
       required: true,
+    },
+    beforeBlockIndex: {
+      index: Number,
+      required: false
     }
   },
   emits: {
@@ -103,7 +107,7 @@ export default {
         content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, officiis?'
       }
 
-      usePageBlocksStore().addTextBlock(textBlock)
+      usePageBlocksStore().addTextBlock(textBlock, this.beforeBlockIndex)
     },
     addImageBlock() {
       const imageBlock = {

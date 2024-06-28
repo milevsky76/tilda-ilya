@@ -1,30 +1,30 @@
-@import "generic/variables";
-@import "generic/functions";
-@import "generic/mixins";
-@import "generic/reset";
-@import "generic/fonts";
-@import "generic/base";
-@import "generic/helpers";
+@import 'generic/variables';
+@import 'generic/functions';
+@import 'generic/mixins';
+@import 'generic/reset';
+@import 'generic/fonts';
+@import 'generic/base';
+@import 'generic/helpers';
 
-@import "components/login-view/login-view";
+@import 'components/login-view/login-view';
 
-@import "components/header-app";
-@import "components/header-page";
+@import 'components/header-app';
+@import 'components/header-page';
 
-@import "components/home-view/home-view";
-@import "components/home-view/home-list";
-@import "components/home-view/home-item";
-@import "components/home-view/home-item-add";
+@import 'components/home-view/home-view';
+@import 'components/home-view/home-list';
+@import 'components/home-view/home-item';
+@import 'components/home-view/home-item-add';
 
-@import "components/generic/popup";
-@import "components/generic/dropdown-popup";
-@import "components/generic/popup-setting";
-@import "components/generic/popup-left";
+@import 'components/generic/popup';
+@import 'components/generic/dropdown-popup';
+@import 'components/generic/popup-setting';
+@import 'components/generic/popup-left';
 
-@import "components/project-view/project-view";
-@import "components/project-view/project-list";
-@import "components/project-view/project-item";
-@import "components/project-view/project-item-del";
-@import "components/project-view/project-item-add";
+@import 'components/project-view/project-view';
+@import 'components/project-view/project-list';
+@import 'components/project-view/project-item';
+@import 'components/project-view/project-item-del';
+@import 'components/project-view/project-item-add';
 
-@import "components/page-edit-view/page-edit-view";
+@import 'components/page-edit-view/page-edit-view';

@@ -1,9 +1,8 @@
-import {
-  defineStore
-} from 'pinia';
+import { defineStore } from 'pinia';
 
 const defaultState = {
-  projects: [{
+  projects: [
+    {
       id: 0,
       title: 'My project1'
     },
@@ -40,8 +39,8 @@ export const useProjectsStore = defineStore({
   },
   getters: {
     getProjectById: (state) => (projectId) => {
-      return state.projects.find(project => project.id === projectId);
-    },
+      return state.projects.find((project) => project.id === projectId);
+    }
   },
   actions: {
     saveState() {
@@ -50,7 +49,7 @@ export const useProjectsStore = defineStore({
     addProject() {
       const newProject = {
         id: this.nextId++,
-        title: "My project",
+        title: 'My project',
         pages: []
       };
 
@@ -59,7 +58,7 @@ export const useProjectsStore = defineStore({
       this.saveState();
     },
     removeProject(id) {
-      this.projects = this.projects.filter(project => project.id !== id);
+      this.projects = this.projects.filter((project) => project.id !== id);
 
       this.saveState();
     }

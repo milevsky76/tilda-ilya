@@ -1,4 +1,5 @@
-.page-edit {}
+.page-edit {
+}
 
 .page-edit__middle-button {
   text-align: center;
@@ -20,7 +21,7 @@
   &.edit {
     &:hover,
     &:focus {
-      background-color: transparentize($primary-200, .5);
+      background-color: transparentize($primary-200, 0.5);
     }
   }
 }
@@ -48,4 +49,54 @@
 
     z-index: -1;
   }
+}
+
+.page-block {
+  position: relative;
+
+  &:hover {
+    .page-block__add-block-button {
+      opacity: 0.5;
+    }
+  }
+}
+
+.page-block__add-block-button {
+  position: absolute;
+  z-index: 10;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: $black;
+  color: $white;
+  border: none;
+  opacity: 0;
+
+  transition:
+    background-color $transition-default,
+    opacity $transition-default;
+
+  &:hover {
+    background-color: transparentize($black, 0.2);
+  }
+
+  svg {
+    fill: $white;
+  }
+}
+
+.page-block__add-block-button {
+  $size: 44px;
+  bottom: calc($size / -2);
+  left: 50%;
+  transform: translateX(-50%);
+
+  padding: 10px;
+
+  width: $size;
+  height: $size;
+
+  border-radius: 50%;
 }
