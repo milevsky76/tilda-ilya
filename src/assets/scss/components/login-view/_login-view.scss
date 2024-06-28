@@ -1,0 +1,97 @@
+.login-view {
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  height: 100%;
+  background-image: linear-gradient(to top right, #ef6b50, #f8ad70);
+}
+
+.login-view__form-wrapper {
+  background-color: transparentize($white, .9);
+  max-width: 410px;
+  padding: 30px 55px 37px;
+  border-radius: 8px;
+}
+
+.login-view__logo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 60px;
+
+  svg {
+    color: $white;
+    display: block;
+    width: 57px;
+    height: 57px;
+  }
+}
+
+.login-view__form {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.login-view__group {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-view__group-label {
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  text-align: left;
+  color: $white;
+}
+
+.login-view__error-message {
+  padding-top: 5px;
+  color: $black;
+  font-weight: 500;
+  text-align: right;
+}
+
+.login-view__input {
+  padding: 0 10px;
+  width: 100%;
+  height: 53px;
+  color: $white;
+  font-size: 24px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  text-align: left;
+  background-color: transparent;
+  border: 0;
+  border-bottom: 1px solid transparentize($white, .7);
+  border-radius: 0;
+  transition: border-color $transition-default;
+
+  &:hover,
+  &:focus {
+    border-color: $white;
+  }
+
+  &:-webkit-autofill {
+    transition: all 5000s ease-in-out 0s;
+  }
+}
+
+.login-view__submit {
+  position: relative;
+  padding: 10px 67px 11px;
+  margin-top: 20px;
+  color: $black;
+  font-size: 18px;
+  line-height: 23px;
+  background-color: #ffe8c7;
+  border: 0;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: background-color $transition-default;
+
+  &:hover,
+  &:focus {
+    background-color: #fef9f6;
+  }
+}

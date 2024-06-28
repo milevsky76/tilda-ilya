@@ -72,6 +72,19 @@
               class="header-page__dropmenu-item">
                 Профиль
             </RouterLink>
+
+            <a v-if="isAuthenticated"
+              href="#"
+              class="header-page__dropmenu-item"
+              @click.prevent="logout">
+                Выйти
+            </a>
+            <RouterLink
+              v-else
+              :to="'/login'"
+              class="header-page__dropmenu-item">
+                Войти
+            </RouterLink>
           </div>
         </div>
       </div>
@@ -82,6 +95,7 @@
 <script>
 import { useProjectsStore } from '@/stores/modules/projects';
 import { usePagesStore } from '@/stores/modules/pages';
+import { useAuthStore } from '@/stores/modules/auth'
 
 import Popup from '@/components/Generic/Popup.vue';
 import PopupSetting from '@/components/Generic/PopupSetting.vue';
@@ -118,6 +132,10 @@ export default {
     savePage(updatedPage) {
       usePagesStore().savePage(updatedPage)
       this.isPopupOpen = false
+    },
+    logout() {
+      useAuthStore().logout();
+      this.$router.push('/logout');
     }
   },
   computed: {
@@ -126,6 +144,9 @@ export default {
     },
     project() {
       return useProjectsStore().getProjectById(+this.id);
+    },
+    isAuthenticated() {
+      return useAuthStore().isAuthenticated;
     },
   },
   mounted() {

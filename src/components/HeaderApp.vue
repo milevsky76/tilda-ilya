@@ -18,14 +18,38 @@
       </div>
 
       <div class="header__nav-right">
-        <a href="javascript:void(0);" class="header__nav-link">Выйти</a>
+        <a v-if="isAuthenticated"
+          href="#"
+          class="header__nav-link"
+          @click.prevent="logout">
+            Выйти
+        </a>
+        <RouterLink
+          v-else
+          :to="'/login'"
+          class="header__nav-link">
+            Войти
+        </RouterLink>
       </div>
     </nav>
   </header>
 </template>
 
 <script>
+import { useAuthStore } from '@/stores/modules/auth'
+
 export default {
-  name: 'HeaderApp'
+  name: 'HeaderApp',
+  methods: {
+    logout() {
+      useAuthStore().logout();
+      this.$router.push('/logout');
+    }
+  },
+  computed: {
+    isAuthenticated() {
+      return useAuthStore().isAuthenticated;
+    },
+  }
 };
 </script>
