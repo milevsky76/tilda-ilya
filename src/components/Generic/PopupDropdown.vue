@@ -62,7 +62,7 @@ export default {
     handleClickOutside(event) {
       const refDropdownItem = this.$refs.dropdownItem
       
-      if (refDropdownItem && !refDropdownItem.contains(event.target)) {
+      if (refDropdownItem && !refDropdownItem?.contains(event.target)) {
         this.closePopup()
         // this.isOpenLocal = false;
         // document.removeEventListener('click', this.handleClickOutside);

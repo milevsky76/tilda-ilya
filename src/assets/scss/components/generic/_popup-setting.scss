@@ -187,7 +187,7 @@ input.popup-setting__input {
   border: 1px solid #b7b7b7;
   border-radius: 100px;
   cursor: pointer;
-  transition: background-color $transition-default;
+  transition: background-color $transition-default, border $transition-default;
 
   &:hover,
   &:focus {

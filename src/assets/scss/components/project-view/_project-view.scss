@@ -31,7 +31,9 @@
   }
 }
 
-.project-view__text {}
+.project-view__text {
+  transition: color $transition-default;
+}
 
 .project-view__icon {
   display: block;

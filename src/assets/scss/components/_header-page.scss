@@ -119,6 +119,7 @@
   border: none;
   background-color: inherit;
   cursor: pointer;
+  transition: background-color $transition-default, background-color $transition-default;
 
   &:hover,
   &:focus {

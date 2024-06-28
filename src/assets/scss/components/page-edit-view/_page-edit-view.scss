@@ -15,6 +15,7 @@
   font-weight: 400;
   padding-left: 20px;
   padding-right: 20px;
+  transition: background-color $transition-default;
 
   &.edit {
     &:hover,
@@ -37,13 +38,6 @@
   color: $black;
   padding-left: 20px;
   padding-right: 20px;
-
-  &.edit {
-    &:hover,
-    &:focus {
-      background-color: transparentize($primary-200, .5);
-    }
-  }
 
   img {
     position: absolute;

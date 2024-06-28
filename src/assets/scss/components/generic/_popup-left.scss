@@ -59,9 +59,9 @@ body:has(.popup-left.show) {
   color: #000;
   width: 100%;
   height: 53px;
-  transition: border-color 0.3s ease-in-out;
   border-bottom: 1px solid #b5b5b5;
   outline: none;
+  transition: border-color 0.3s ease-in-out;
 
   &:hover,
   &:focus {
@@ -80,6 +80,13 @@ body:has(.popup-left.show) {
   border: none;
   border-bottom: 1px solid #b5b5b5;
   border-left: 1px solid #b5b5b5;
+  color: #333333;
+  transition: color $transition-default;
+
+  &:hover,
+  &:focus {
+    color: #ff8562;
+  }
 }
 
 .popup-left__close {
@@ -93,6 +100,13 @@ body:has(.popup-left.show) {
   border: none;
   border-left: 1px solid #b5b5b5;
   border-bottom: 1px solid #b5b5b5;
+  color: #333333;
+  transition: color $transition-default;
+
+  &:hover,
+  &:focus {
+    color: #ff8562;
+  }
 }
 
 .popup-left__types-wrapper {
@@ -108,9 +122,15 @@ body:has(.popup-left.show) {
   border: none;
   border-bottom: 1px solid #b5b5b5;
   font-weight: 700;
+  transition: background-color $transition-default;
 
   &.active {
     color: #ff8562;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: #e5e5e5;
   }
 }
 
@@ -127,6 +147,7 @@ body:has(.popup-left.show) {
     background-color: transparent;
     border: none;
     border-bottom: 1px solid $primary-300;
+    transition: background-color $transition-default;
 
     &:hover,
     &:focus {

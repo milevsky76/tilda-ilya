@@ -18,14 +18,14 @@
           <button
             type="button"
             class="popup-left__search">
-              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="none"><path stroke="#000" stroke-linecap="round" stroke-width="1.3" d="M10.485 10.182c-1.775 2.116-4.908 2.409-6.999.655-2.09-1.755-2.346-4.891-.57-7.007 1.774-2.115 4.908-2.408 6.998-.654s2.346 4.891.571 7.006Zm0 0 3.155 2.647"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="none"><path stroke="currentColor" stroke-linecap="round" stroke-width="1.3" d="M10.485 10.182c-1.775 2.116-4.908 2.409-6.999.655-2.09-1.755-2.346-4.891-.57-7.007 1.774-2.115 4.908-2.408 6.998-.654s2.346 4.891.571 7.006Zm0 0 3.155 2.647"/></svg>
           </button>
 
           <button
             class="popup-left__close"
             type="button"
             @click="close">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="#333333" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="feather feather-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="feather feather-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>
           </button>
         </div>
 
