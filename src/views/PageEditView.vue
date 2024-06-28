@@ -138,7 +138,7 @@
 
   <div class="page-edit">
     <div class="page-edit__middle-button">
-      <button class="project-view__new-page" type="button" @click="isPopupOpen = true">
+      <button class="project-view__new-page" type="button" @click="openPopup(undefined)">
         <span class="project-view__new-page-text">Добавить запись</span>
       </button>
     </div>

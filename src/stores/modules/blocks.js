@@ -63,6 +63,7 @@ export const usePageBlocksStore = defineStore({
       localStorage.setItem('blocksState', JSON.stringify(this.$state));
     },
     addTextBlock(textBlock, beforeBlockId = undefined) {
+      console.log(beforeBlockId);
       const indexState = getIndex(this, textBlock.pageId);
 
       if (beforeBlockId === undefined) {
